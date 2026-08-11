@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, Users } from 'lucide-react';
+import { ExternalLink, Users } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa';
 
 export default function Projects() {
   const { t } = useTranslation();
@@ -87,7 +88,7 @@ export default function Projects() {
               className="glass rounded-2xl p-6 flex flex-col h-full border border-border/50 hover:border-accent/50 transition-colors group relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                <Github size={100} className="-rotate-12 transform translate-x-4 -translate-y-4" />
+                <FaGithub size={100} className="-rotate-12 transform translate-x-4 -translate-y-4" />
               </div>
               
               <div className="flex justify-between items-start mb-4 relative z-10">
