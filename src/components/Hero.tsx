@@ -27,22 +27,22 @@ const useKonamiCode = () => {
 
 export default function Hero() {
   const { t } = useTranslation();
-  const [copied, setCopied] = useState(false);
+  const [copiedText, setCopiedText] = useState<string | null>(null);
   useKonamiCode();
 
-  const handleTelegramClick = (e: React.MouseEvent) => {
+  const handleCopy = (e: React.MouseEvent, text: string, messageKey: string) => {
     e.preventDefault();
-    navigator.clipboard.writeText('@Golub4ikOfficial');
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    navigator.clipboard.writeText(text);
+    setCopiedText(messageKey);
+    setTimeout(() => setCopiedText(null), 2000);
   };
 
   const socials = [
     { icon: FaGithub, href: 'https://github.com/Golub4ik-Official', label: 'GitHub' },
-    { icon: FaTelegramPlane, href: '#', label: 'Telegram', onClick: handleTelegramClick },
+    { icon: FaTelegramPlane, href: '#', label: 'Telegram', onClick: (e: React.MouseEvent) => handleCopy(e, '@Golub4ikOfficial', 'hero.copied_telegram') },
     { icon: FaDiscord, href: 'https://discord.gg/hFHKKyyDvd', label: 'Discord Server' },
     { icon: FaVk, href: 'https://vk.ru/golub4ik_official', label: 'VK' },
-    { icon: FaEnvelope, href: 'mailto:KirillGolubenkoG@yandex.ru', label: 'Email' },
+    { icon: FaEnvelope, href: '#', label: 'Email', onClick: (e: React.MouseEvent) => handleCopy(e, 'KirillGolubenkoG@yandex.ru', 'hero.copied_email') },
   ];
 
   return (
@@ -114,14 +114,14 @@ export default function Hero() {
                 </a>
               ))}
               <AnimatePresence>
-                {copied && (
+                {copiedText && (
                   <motion.div
                     initial={{ opacity: 0, y: 10, scale: 0.9 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 10, scale: 0.9 }}
                     className="absolute -top-12 left-1/2 md:left-24 -translate-x-1/2 bg-accent text-white px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap shadow-lg z-10"
                   >
-                    {t('hero.telegram_copied')}
+                    {t(copiedText)}
                   </motion.div>
                 )}
               </AnimatePresence>
