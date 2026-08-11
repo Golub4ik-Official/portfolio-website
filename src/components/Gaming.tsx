@@ -44,7 +44,7 @@ export default function Gaming() {
 
       // Fetch most played games from generated static JSON
       try {
-        const localResponse = await fetch('/steam-data.json');
+        const localResponse = await fetch(`${import.meta.env.BASE_URL}steam-data.json`);
         if (localResponse.ok) {
           const localData = await localResponse.json();
           setMostPlayedGames(localData);
