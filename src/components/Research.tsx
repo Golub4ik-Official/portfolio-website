@@ -37,9 +37,13 @@ export default function Research() {
                 {t('research.project_title')}
               </h3>
               
-              <p className="text-muted-foreground mb-8 text-lg leading-relaxed">
+              <p className="text-muted-foreground mb-4 text-lg leading-relaxed">
                 {t('research.project_desc')}
               </p>
+              
+              <div className="flex items-center gap-2 text-sm text-accent mb-8 font-medium">
+                {t('research.supervisor')}
+              </div>
               
               <div className="flex flex-wrap gap-2 mb-8">
                 {techStack.map((tech, index) => (
