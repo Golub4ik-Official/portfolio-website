@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Arma 3",
+    "hours": "807.6 hrs",
+    "link": "https://store.steampowered.com/app/107410",
+    "logo": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/107410/capsule_184x69.jpg"
+  },
+  {
+    "name": "Garry's Mod",
+    "hours": "639.9 hrs",
+    "link": "https://store.steampowered.com/app/4000",
+    "logo": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4000/capsule_184x69.jpg"
+  },
+  {
+    "name": "Hearts of Iron IV",
+    "hours": "270.6 hrs",
+    "link": "https://store.steampowered.com/app/394360",
+    "logo": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/394360/capsule_184x69.jpg"
+  },
+  {
+    "name": "War Thunder",
+    "hours": "188.1 hrs",
+    "link": "https://store.steampowered.com/app/236390",
+    "logo": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/236390/capsule_184x69.jpg"
+  },
+  {
+    "name": "Barotrauma",
+    "hours": "120.6 hrs",
+    "link": "https://store.steampowered.com/app/602960",
+    "logo": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/602960/capsule_184x69.jpg"
+  },
+  {
+    "name": "SCP: Secret Laboratory",
+    "hours": "99.8 hrs",
+    "link": "https://store.steampowered.com/app/700330",
+    "logo": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700330/capsule_184x69.jpg"
+  },
+  {
+    "name": "Tom Clancy's Rainbow Six Siege",
+    "hours": "30.7 hrs",
+    "link": "https://store.steampowered.com/app/359550",
+    "logo": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359550/capsule_184x69.jpg"
+  },
+  {
+    "name": "Counter-Strike 2",
+    "hours": "29.0 hrs",
+    "link": "https://store.steampowered.com/app/730",
+    "logo": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/730/capsule_184x69.jpg"
+  },
+  {
+    "name": "World of Tanks Blitz",
+    "hours": "22.7 hrs",
+    "link": "https://store.steampowered.com/app/444200",
+    "logo": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/444200/capsule_184x69.jpg"
+  },
+  {
+    "name": "PUBG: BATTLEGROUNDS",
+    "hours": "20.7 hrs",
+    "link": "https://store.steampowered.com/app/578080",
+    "logo": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/578080/capsule_184x69.jpg"
+  }
+]
