@@ -56,10 +56,10 @@ export default function Hero() {
                 className="glass px-4 py-2 rounded-full border border-accent/30 hover:border-accent transition-colors flex items-center gap-2 group"
               >
                 <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                <span className="text-sm font-medium">Резидент KiberOne</span>
+                <span className="text-sm font-medium">{t('hero.kiber_resident')}</span>
               </a>
               <p className="text-xs text-muted-foreground text-center md:text-left max-w-sm">
-                Признано ООН и ЮНЕСКО (WSIS Prizes), HiSTES и Microsoft
+                {t('hero.kiber_awards')}
               </p>
             </div>
 
