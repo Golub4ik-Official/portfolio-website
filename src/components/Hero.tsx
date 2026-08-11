@@ -105,7 +105,7 @@ export default function Hero() {
               
               {/* Photo placeholder or actual photo */}
               <div className="absolute inset-8 rounded-full flex items-center justify-center overflow-hidden bg-accent/5">
-                <img src="/avatar.png" alt="Kirill Golubenko" className="w-full h-full object-cover" />
+                <img src={`${import.meta.env.BASE_URL}avatar.png`} alt="Kirill Golubenko" className="w-full h-full object-cover" />
               </div>
             </div>
           </motion.div>

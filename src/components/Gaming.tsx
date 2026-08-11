@@ -62,25 +62,25 @@ export default function Gaming() {
   const favoriteGames = [
     {
       name: 'Minecraft',
-      logo: '/games/minecraft.webp',
+      logo: `${import.meta.env.BASE_URL}games/minecraft.webp`,
       link: 'https://www.minecraft.net/',
       desc: 'Sandbox / Survival'
     },
     {
       name: 'Space Station 13',
-      logo: '/games/ss13.png',
+      logo: `${import.meta.env.BASE_URL}games/ss13.png`,
       link: 'https://spacestation13.com/',
       desc: 'Roleplay / Simulation'
     },
     {
       name: 'Space Station 14',
-      logo: '/games/ss14.png',
+      logo: `${import.meta.env.BASE_URL}games/ss14.png`,
       link: 'https://spacestation14.io/',
       desc: 'Multiplayer / Sandbox'
     },
     {
       name: 'Arma 3',
-      logo: '/games/arma3.jpg',
+      logo: `${import.meta.env.BASE_URL}games/arma3.jpg`,
       link: 'https://arma3.com/',
       desc: 'Military Simulation'
     }
