@@ -6,9 +6,12 @@
     "gaming": "Gaming"
   },
   "hero": {
-    "greeting": "Hi, I'm",
-    "role": "Developer & Gamer",
-    "bio": "I create stunning web applications and enjoy diving into immersive virtual worlds.",
+    "greeting": "Hello, I'm",
+    "name": "Kirill Golubenko",
+    "nickname": "Golub4ik",
+    "role": "Full Stack Developer",
+    "description": "I build modern and performant web applications with a focus on user experience and clean code.",
+    "telegram_copied": "Username copied to clipboard!",
     "contact": "Contact Me"
   },
   "skills": {
@@ -34,6 +37,9 @@
   },
   "footer": {
     "copyright": "© 2026. All rights reserved.",
-    "socials": "Find me on"
+    "socials": "Follow me:"
+  },
+  "music": {
+    "title": "My Playlist"
   }
 }

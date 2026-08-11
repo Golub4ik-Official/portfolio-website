@@ -3,6 +3,7 @@ import Hero from './components/Hero';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Gaming from './components/Gaming';
+import Music from './components/Music';
 import Footer from './components/Footer';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Skills />
         <Projects />
         <Gaming />
+        <Music />
       </main>
 
       <Footer />
