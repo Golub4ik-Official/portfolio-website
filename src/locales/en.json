@@ -1,0 +1,39 @@
+{
+  "nav": {
+    "about": "About",
+    "skills": "Skills",
+    "projects": "Projects",
+    "gaming": "Gaming"
+  },
+  "hero": {
+    "greeting": "Hi, I'm",
+    "role": "Developer & Gamer",
+    "bio": "I create stunning web applications and enjoy diving into immersive virtual worlds.",
+    "contact": "Contact Me"
+  },
+  "skills": {
+    "title": "My Skills",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "tools": "Tools & Others"
+  },
+  "projects": {
+    "title": "Recent Projects",
+    "view_source": "Source Code",
+    "live_demo": "Live Demo"
+  },
+  "gaming": {
+    "title": "Gaming Profile",
+    "setup": "My Setup",
+    "loading": "Loading Steam games...",
+    "tabs": {
+      "recent": "Recent Games",
+      "favorites": "Favorite Games",
+      "most_played": "Most Played"
+    }
+  },
+  "footer": {
+    "copyright": "© 2026. All rights reserved.",
+    "socials": "Find me on"
+  }
+}
