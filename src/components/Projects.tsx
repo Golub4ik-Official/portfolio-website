@@ -88,9 +88,9 @@ export default function Projects() {
           </h3>
           <div className="flex flex-col lg:flex-row gap-8 items-center justify-center">
             <img 
-              src="https://github-readme-stats.vercel.app/api?username=Golub4ik-Official&theme=transparent&hide_border=true&show_icons=true&text_color=e5e5e5&icon_color=ca6e6f&title_color=ca6e6f" 
-              alt="GitHub Stats" 
-              className="w-full lg:w-[400px] object-contain drop-shadow-md"
+              src="https://github-readme-streak-stats.herokuapp.com/?user=Golub4ik-Official&theme=transparent&hide_border=true&ring=ca6e6f&fire=ca6e6f&currStreakNum=e5e5e5&sideNums=e5e5e5&currStreakLabel=ca6e6f&sideLabels=ca6e6f&dates=a0a0a0" 
+              alt="GitHub Streak" 
+              className="w-full lg:w-[450px] object-contain drop-shadow-md"
             />
             <div className="w-full flex-1 overflow-hidden">
               <img 
