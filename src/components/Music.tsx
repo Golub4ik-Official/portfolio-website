@@ -24,10 +24,11 @@ export default function Music() {
         >
           <iframe 
             frameBorder="0" 
-            style={{ border: 'none', width: '100%', height: '450px', borderRadius: '1rem', background: 'transparent' }} 
+            allow="clipboard-write"
+            style={{ border: 'none', width: '100%', height: '556px', borderRadius: '1rem', background: 'transparent' }} 
             width="100%" 
-            height="450" 
-            src="https://music.yandex.ru/iframe/#playlist/lk.8455b3aa-c3b9-49c8-afe6-afe0f8e64d88"
+            height="556" 
+            src="https://music.yandex.ru/iframe/playlist/KirillGolubenkoG/3"
             title="Yandex Music Playlist"
           />
         </motion.div>
