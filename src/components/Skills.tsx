@@ -1,21 +1,25 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { Monitor, Server, Database } from 'lucide-react';
 
 export default function Skills() {
   const { t } = useTranslation();
 
   const skillCategories = [
     {
-      title: 'skills.frontend',
-      skills: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js', 'Vite']
+      title: t('skills.frontend'),
+      icon: <Monitor size={24} />,
+      skills: ['HTML+CSS', 'JavaScript', 'React', 'Tailwind CSS']
     },
     {
-      title: 'skills.backend',
-      skills: ['Node.js', 'Express', 'PostgreSQL', 'REST API']
+      title: t('skills.backend'),
+      icon: <Server size={24} />,
+      skills: ['Python', 'Java', 'Node.js', 'SQL', 'C++']
     },
     {
-      title: 'skills.tools',
-      skills: ['Git', 'GitHub', 'Figma', 'Linux', 'VS Code']
+      title: t('skills.tools'),
+      icon: <Database size={24} />,
+      skills: ['Godot', 'Blender', 'Git', 'Docker']
     }
   ];
 

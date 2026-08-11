@@ -1,40 +1,71 @@
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { ExternalLink } from 'lucide-react';
-import { FaGithub } from 'react-icons/fa';
+import { Github, ExternalLink, Users } from 'lucide-react';
 
 export default function Projects() {
   const { t } = useTranslation();
 
-  const projectsList = [
+  const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-stack e-commerce solution with React, Node.js, and Stripe integration.',
-      image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=500&q=80',
-      tags: ['React', 'Node.js', 'Stripe'],
-      demoUrl: '#',
-      githubUrl: '#'
+      title: 'BattlePlugin',
+      description: 'Плагин для Paper 1.21.11: битвы между командами с захватом точек, статистикой и историей.',
+      tech: ['Java', 'Minecraft API', 'Paper'],
+      github: 'https://github.com/Golub4ik-Official/BattlePlugin',
+      collaborator: false
     },
     {
-      title: 'Task Management App',
-      description: 'A beautifully designed task manager with drag-and-drop functionality.',
-      image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=500&q=80',
-      tags: ['TypeScript', 'Tailwind', 'Zustand'],
-      demoUrl: '#',
-      githubUrl: '#'
+      title: 'blockbench-mcp',
+      description: 'MCP server + Blockbench plugin bridge: control Blockbench (3D modeling, cubes) from AI assistants via Model Context Protocol.',
+      tech: ['TypeScript', 'MCP', 'Blockbench API'],
+      github: 'https://github.com/Golub4ik-Official/blockbench-mcp',
+      collaborator: false
     },
     {
-      title: 'AI Chat Interface',
-      description: 'Modern chat interface communicating with OpenAI API.',
-      image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500&q=80',
-      tags: ['Next.js', 'OpenAI', 'Framer Motion'],
-      demoUrl: '#',
-      githubUrl: '#'
+      title: 'DiscordAuth',
+      description: 'Paper plugin for Discord-based authentication with 2FA on new IP.',
+      tech: ['Java', 'Discord API'],
+      github: 'https://github.com/Golub4ik-Official/DiscordAuth',
+      collaborator: false
+    },
+    {
+      title: 'BandaMarines',
+      description: 'Contains the code for CM-SS13 (Colonial Marines).',
+      tech: ['DM (BYOND)'],
+      github: 'https://github.com/Golub4ik-Official/BandaMarines',
+      collaborator: true
+    },
+    {
+      title: 'dead-space-14',
+      description: 'Dead Space adaptation for Space Station 14 based on RobustToolbox.',
+      tech: ['C#', 'RobustToolbox'],
+      github: 'https://github.com/Golub4ik-Official/dead-space-14',
+      collaborator: true
+    },
+    {
+      title: 'Golub4ik-Web-Checker',
+      description: 'Web service checker and monitoring tool.',
+      tech: ['Python'],
+      github: 'https://github.com/Golub4ik-Official/Golub4ik-Web-Checker',
+      collaborator: false
+    },
+    {
+      title: 'Golub4ik-DeadSpace-Checker',
+      description: 'Specific checker utility for the Dead Space 14 project.',
+      tech: ['Python'],
+      github: 'https://github.com/Golub4ik-Official/Golub4ik-DeadSpace-Checker',
+      collaborator: false
+    },
+    {
+      title: 'HorseArmorHealth',
+      description: 'Minecraft plugin affecting horse armor and health mechanics.',
+      tech: ['Java'],
+      github: 'https://github.com/Golub4ik-Official/HorseArmorHealth',
+      collaborator: false
     }
   ];
 
   return (
-    <section id="projects" className="py-24 bg-card/50">
+    <section id="projects" className="py-24 bg-secondary/30 relative">
       <div className="container mx-auto px-4">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
@@ -46,44 +77,53 @@ export default function Projects() {
         </motion.h2>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projectsList.map((project, index) => (
+          {projects.map((project, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group glass rounded-2xl overflow-hidden border border-border/50 hover:border-accent/50 transition-colors flex flex-col"
+              className="glass rounded-2xl p-6 flex flex-col h-full border border-border/50 hover:border-accent/50 transition-colors group relative overflow-hidden"
             >
-              <div className="relative h-48 overflow-hidden">
-                <div className="absolute inset-0 bg-accent/20 group-hover:bg-transparent transition-colors z-10" />
-                <img 
-                  src={project.image} 
-                  alt={project.title}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
-                />
+              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                <Github size={100} className="-rotate-12 transform translate-x-4 -translate-y-4" />
               </div>
               
-              <div className="p-6 flex flex-col flex-grow">
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-muted-foreground mb-4 text-sm flex-grow">{project.description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag, tIndex) => (
-                    <span key={tIndex} className="text-xs px-2 py-1 bg-secondary rounded-md text-secondary-foreground">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+              <div className="flex justify-between items-start mb-4 relative z-10">
+                <h3 className="text-xl font-bold group-hover:text-accent transition-colors">
+                  {project.title}
+                </h3>
+                <a 
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer" 
+                  className="text-muted-foreground hover:text-accent transition-colors"
+                >
+                  <ExternalLink size={20} />
+                </a>
+              </div>
 
-                <div className="flex gap-4 mt-auto">
-                  <a href={project.githubUrl} className="flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors">
-                    <FaGithub size={16} /> {t('projects.view_source')}
-                  </a>
-                  <a href={project.demoUrl} className="flex items-center gap-2 text-sm font-medium hover:text-accent transition-colors">
-                    <ExternalLink size={16} /> {t('projects.live_demo')}
-                  </a>
+              {project.collaborator && (
+                <div className="flex items-center gap-1.5 text-xs font-medium text-amber-500 bg-amber-500/10 w-fit px-2 py-1 rounded-full mb-3 border border-amber-500/20">
+                  <Users size={12} />
+                  <span>Collaborator</span>
                 </div>
+              )}
+              
+              <p className="text-muted-foreground mb-6 flex-grow text-sm relative z-10">
+                {project.description}
+              </p>
+              
+              <div className="flex flex-wrap gap-2 relative z-10">
+                {project.tech.map((tech, techIndex) => (
+                  <span 
+                    key={techIndex}
+                    className="text-xs px-3 py-1 rounded-full bg-secondary text-secondary-foreground border border-border"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </motion.div>
           ))}

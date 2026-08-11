@@ -15,10 +15,10 @@
     "contact": "Contact Me"
   },
   "skills": {
-    "title": "My Skills",
-    "frontend": "Frontend",
-    "backend": "Backend",
-    "tools": "Tools & Others"
+    "title": "Skills & Expertise",
+    "frontend": "Frontend & UI",
+    "backend": "Backend & Data",
+    "tools": "Tools & GameDev"
   },
   "projects": {
     "title": "Recent Projects",

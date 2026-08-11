@@ -62,25 +62,25 @@ export default function Gaming() {
   const favoriteGames = [
     {
       name: 'Minecraft',
-      logo: 'https://upload.wikimedia.org/wikipedia/en/5/51/Minecraft_cover.png',
+      logo: 'https://m.media-amazon.com/images/I/61smQbBvFjL.jpg',
       link: 'https://www.minecraft.net/',
       desc: 'Sandbox / Survival'
     },
     {
       name: 'Space Station 13',
-      logo: 'https://upload.wikimedia.org/wikipedia/en/8/87/Space_Station_13_logo.png',
+      logo: 'https://spacestation13.com/about/images/logo.png',
       link: 'https://spacestation13.com/',
       desc: 'Roleplay / Simulation'
     },
     {
       name: 'Space Station 14',
-      logo: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1221060/capsule_184x69.jpg',
+      logo: 'https://cdn.akamai.steamstatic.com/steam/apps/1221060/header.jpg',
       link: 'https://spacestation14.io/',
       desc: 'Multiplayer / Sandbox'
     },
     {
       name: 'Arma 3',
-      logo: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/107410/capsule_184x69.jpg',
+      logo: 'https://cdn.akamai.steamstatic.com/steam/apps/107410/header.jpg',
       link: 'https://arma3.com/',
       desc: 'Military Simulation'
     }
@@ -88,17 +88,16 @@ export default function Gaming() {
 
   // Placeholders shown if steam-data.json fails or hasn't been generated yet
   const fallbackMostPlayed = [
-    { name: 'Hearts of Iron IV', hours: '271+ hrs', logo: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/394360/capsule_184x69.jpg', link: 'https://steamcommunity.com/app/394360' },
-    { name: 'Project Zomboid', hours: '100+ hrs', logo: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/108600/capsule_184x69.jpg', link: 'https://steamcommunity.com/app/108600' }
+    { name: 'Update via GitHub Action', hours: '... hrs', logo: '', link: '#' }
   ];
 
   const displayMostPlayed = mostPlayedGames.length > 0 ? mostPlayedGames : fallbackMostPlayed;
 
   const setupSpecs = [
-    { icon: Monitor, label: 'Monitor', value: '27" 1440p 165Hz IPS' },
-    { icon: Cpu, label: 'Processor', value: 'AMD Ryzen 7 5800X3D' },
-    { icon: Trophy, label: 'Graphics', value: 'RTX 4070 Ti' },
-    { icon: Mouse, label: 'Peripherals', value: 'Logitech G Pro X Superlight' }
+    { icon: Monitor, label: 'Monitor', value: 'Laptop Screen' },
+    { icon: Cpu, label: 'Processor', value: 'Intel Core i5-9300H @ 2.40GHz' },
+    { icon: Trophy, label: 'Graphics', value: 'NVIDIA GeForce GTX 1660 Ti' },
+    { icon: Mouse, label: 'Peripherals', value: 'Defender Sinister & ГАРНИЗОН' }
   ];
 
   return (

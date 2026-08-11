@@ -15,10 +15,10 @@
     "contact": "Связаться со мной"
   },
   "skills": {
-    "title": "Мои навыки",
-    "frontend": "Фронтенд",
-    "backend": "Бэкенд",
-    "tools": "Инструменты"
+    "title": "Навыки и Технологии",
+    "frontend": "Frontend и UI",
+    "backend": "Backend и Данные",
+    "tools": "Tools и GameDev"
   },
   "projects": {
     "title": "Мои проекты",

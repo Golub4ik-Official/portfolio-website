@@ -44,9 +44,24 @@ export default function Hero() {
             <h3 className="text-2xl md:text-3xl text-muted-foreground font-semibold mb-6">
               {t('hero.nickname')} | {t('hero.role')}
             </h3>
-            <p className="text-lg text-muted-foreground/80 mb-8 max-w-2xl mx-auto md:mx-0">
+            <p className="text-lg text-muted-foreground/80 mb-6 max-w-2xl mx-auto md:mx-0">
               {t('hero.description')}
             </p>
+
+            <div className="flex flex-col md:flex-row items-center gap-4 mb-8">
+              <a 
+                href="https://kiber1.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="glass px-4 py-2 rounded-full border border-accent/30 hover:border-accent transition-colors flex items-center gap-2 group"
+              >
+                <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+                <span className="text-sm font-medium">Резидент KiberOne</span>
+              </a>
+              <p className="text-xs text-muted-foreground text-center md:text-left max-w-sm">
+                Признано ООН и ЮНЕСКО (WSIS Prizes), HiSTES и Microsoft
+              </p>
+            </div>
 
             <div className="flex flex-wrap justify-center md:justify-start gap-4 relative">
               {socials.map((social, index) => (
@@ -90,7 +105,7 @@ export default function Hero() {
               
               {/* Photo placeholder or actual photo */}
               <div className="absolute inset-8 rounded-full flex items-center justify-center overflow-hidden bg-accent/5">
-                <img src="/photo_nobg.png" alt="Kirill Golubenko" className="w-full h-full object-cover scale-110" />
+                <img src="/avatar.png" alt="Kirill Golubenko" className="w-full h-full object-cover" />
               </div>
             </div>
           </motion.div>
