@@ -62,25 +62,25 @@ export default function Gaming() {
   const favoriteGames = [
     {
       name: 'Minecraft',
-      logo: 'https://m.media-amazon.com/images/I/61smQbBvFjL.jpg',
+      logo: '/games/minecraft.jpg',
       link: 'https://www.minecraft.net/',
       desc: 'Sandbox / Survival'
     },
     {
       name: 'Space Station 13',
-      logo: 'https://spacestation13.com/about/images/logo.png',
+      logo: '/games/ss13.jpg',
       link: 'https://spacestation13.com/',
       desc: 'Roleplay / Simulation'
     },
     {
       name: 'Space Station 14',
-      logo: 'https://cdn.akamai.steamstatic.com/steam/apps/1221060/header.jpg',
+      logo: '/games/ss14.jpg',
       link: 'https://spacestation14.io/',
       desc: 'Multiplayer / Sandbox'
     },
     {
       name: 'Arma 3',
-      logo: 'https://cdn.akamai.steamstatic.com/steam/apps/107410/header.jpg',
+      logo: '/games/arma3.jpg',
       link: 'https://arma3.com/',
       desc: 'Military Simulation'
     }
@@ -88,7 +88,7 @@ export default function Gaming() {
 
   // Placeholders shown if steam-data.json fails or hasn't been generated yet
   const fallbackMostPlayed = [
-    { name: 'Update via GitHub Action', hours: '... hrs', logo: '', link: '#' }
+    { name: 'Update via GitHub Action', hours: '... hrs', logo: '', link: 'https://github.com/Golub4ik-Official/portfolio-website/actions' }
   ];
 
   const displayMostPlayed = mostPlayedGames.length > 0 ? mostPlayedGames : fallbackMostPlayed;
