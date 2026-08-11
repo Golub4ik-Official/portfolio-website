@@ -28,22 +28,7 @@ const useKonamiCode = () => {
 export default function Hero() {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
-  const [avatarClicks, setAvatarClicks] = useState(0);
-  const [isSpinning, setIsSpinning] = useState(false);
-
   useKonamiCode();
-
-  const handleAvatarClick = () => {
-    const newCount = avatarClicks + 1;
-    if (newCount >= 5) {
-      document.documentElement.classList.toggle('alt-theme');
-      setIsSpinning(true);
-      setTimeout(() => setIsSpinning(false), 1000);
-      setAvatarClicks(0);
-    } else {
-      setAvatarClicks(newCount);
-    }
-  };
 
   const handleTelegramClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -156,9 +141,8 @@ export default function Hero() {
               
               {/* Photo placeholder or actual photo */}
               <div 
-                className={`absolute inset-8 rounded-full flex items-center justify-center overflow-hidden bg-accent/5 cursor-pointer transition-transform duration-500 ${isSpinning ? 'rotate-[360deg] scale-110' : ''}`}
-                onClick={handleAvatarClick}
-                title="Click me!"
+                className="absolute inset-8 rounded-full flex items-center justify-center overflow-hidden bg-accent/5 transition-transform duration-500 hover:scale-105"
+                title="↑ ↑ ↓ ↓ ← → ← → B A"
               >
                 <img src={`${import.meta.env.BASE_URL}avatar.png`} alt="Kirill Golubenko" className="w-full h-full object-cover" />
               </div>
