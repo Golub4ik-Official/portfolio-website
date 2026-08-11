@@ -12,6 +12,7 @@ export default function Header() {
     { key: 'about', href: '#about' },
     { key: 'skills', href: '#skills' },
     { key: 'projects', href: '#projects' },
+    { key: 'research', href: '#research' },
     { key: 'gaming', href: '#gaming' },
     { key: 'music', href: '#music' },
   ];

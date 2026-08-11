@@ -3,6 +3,7 @@
     "about": "About",
     "skills": "Skills",
     "projects": "Projects",
+    "research": "Research",
     "gaming": "Gaming",
     "music": "Music"
   },
@@ -31,6 +32,15 @@
     "github_stats": "GitHub Statistics",
     "view_source": "Source Code",
     "live_demo": "Live Demo"
+  },
+  "research": {
+    "title": "Science & Research",
+    "project_title": "Water Footprint Calculator",
+    "project_desc": "Individual research project. Developed a methodology and web application to assess water footprints based on the Water Footprint Network standards (Hoekstra methodologies).",
+    "tech": ["Ecology", "React", "Research"],
+    "btn_live": "Live Project",
+    "btn_paper": "Read Paper (.docx)",
+    "btn_presentation": "Presentation (.pptx)"
   },
   "gaming": {
     "title": "Gaming Profile",
