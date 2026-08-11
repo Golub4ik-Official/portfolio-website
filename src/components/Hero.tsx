@@ -1,11 +1,49 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaTelegramPlane, FaDiscord, FaVk, FaEnvelope } from 'react-icons/fa';
 
+const useKonamiCode = () => {
+  const [count, setCount] = useState(0);
+  const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === konamiCode[count]) {
+        if (count === konamiCode.length - 1) {
+          document.documentElement.classList.toggle('retro-theme');
+          setCount(0);
+        } else {
+          setCount(count + 1);
+        }
+      } else {
+        setCount(0);
+      }
+    };
+    window.addEventListener('keydown', handler);
+    return () => window.removeEventListener('keydown', handler);
+  }, [count]);
+};
+
 export default function Hero() {
   const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
+  const [avatarClicks, setAvatarClicks] = useState(0);
+  const [isSpinning, setIsSpinning] = useState(false);
+
+  useKonamiCode();
+
+  const handleAvatarClick = () => {
+    const newCount = avatarClicks + 1;
+    if (newCount >= 5) {
+      document.documentElement.classList.toggle('alt-theme');
+      setIsSpinning(true);
+      setTimeout(() => setIsSpinning(false), 1000);
+      setAvatarClicks(0);
+    } else {
+      setAvatarClicks(newCount);
+    }
+  };
 
   const handleTelegramClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -48,7 +86,7 @@ export default function Hero() {
               {t('hero.description')}
             </p>
 
-            <div className="flex flex-col md:flex-row items-center gap-4 mb-8">
+            <div className="flex flex-col md:flex-row items-center gap-4 mb-6">
               <a 
                 href="https://kiber1.com" 
                 target="_blank" 
@@ -61,6 +99,19 @@ export default function Hero() {
               <p className="text-xs text-muted-foreground text-center md:text-left max-w-sm">
                 {t('hero.kiber_awards')}
               </p>
+            </div>
+
+            {/* Currently Doing Block */}
+            <div className="glass p-4 rounded-xl border border-accent/20 mb-8 inline-block text-left relative overflow-hidden group">
+              <div className="absolute inset-0 bg-accent/5 group-hover:bg-accent/10 transition-colors" />
+              <div className="relative flex items-center gap-3 mb-2">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+                </span>
+                <span className="text-sm font-bold text-foreground">{t('hero.currently_learning')}</span>
+              </div>
+              <p className="text-sm text-muted-foreground relative z-10">{t('hero.current_activity')}</p>
             </div>
 
             <div className="flex flex-wrap justify-center md:justify-start gap-4 relative">
@@ -104,7 +155,11 @@ export default function Hero() {
               <div className="absolute inset-4 rounded-full border-2 border-accent/40 animate-[spin_15s_linear_infinite_reverse]" />
               
               {/* Photo placeholder or actual photo */}
-              <div className="absolute inset-8 rounded-full flex items-center justify-center overflow-hidden bg-accent/5">
+              <div 
+                className={`absolute inset-8 rounded-full flex items-center justify-center overflow-hidden bg-accent/5 cursor-pointer transition-transform duration-500 ${isSpinning ? 'rotate-[360deg] scale-110' : ''}`}
+                onClick={handleAvatarClick}
+                title="Click me!"
+              >
                 <img src={`${import.meta.env.BASE_URL}avatar.png`} alt="Kirill Golubenko" className="w-full h-full object-cover" />
               </div>
             </div>

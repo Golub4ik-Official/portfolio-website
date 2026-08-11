@@ -15,7 +15,9 @@
     "telegram_copied": "Имя пользователя скопировано!",
     "contact": "Связаться со мной",
     "kiber_resident": "Резидент KiberOne",
-    "kiber_awards": "Признано ООН и ЮНЕСКО (WSIS Prizes), HiSTES и Microsoft"
+    "kiber_awards": "Признано ООН и ЮНЕСКО (WSIS Prizes), HiSTES и Microsoft",
+    "currently_learning": "Изучаю: Java",
+    "current_activity": "Деятельность: Разработка майнкрафт серверов & плагинов"
   },
   "skills": {
     "title": "Навыки и Технологии",
@@ -25,6 +27,7 @@
   },
   "projects": {
     "title": "Мои проекты",
+    "github_stats": "Статистика GitHub",
     "view_source": "Исходный код",
     "live_demo": "Посмотреть"
   },

@@ -15,7 +15,9 @@
     "telegram_copied": "Username copied to clipboard!",
     "contact": "Contact Me",
     "kiber_resident": "KiberOne Resident",
-    "kiber_awards": "Recognized by UN and UNESCO (WSIS Prizes), HiSTES, and Microsoft"
+    "kiber_awards": "Recognized by UN and UNESCO (WSIS Prizes), HiSTES, and Microsoft",
+    "currently_learning": "Studying: Java",
+    "current_activity": "Activity: Minecraft servers & plugins development"
   },
   "skills": {
     "title": "Skills & Expertise",
@@ -25,6 +27,7 @@
   },
   "projects": {
     "title": "Recent Projects",
+    "github_stats": "GitHub Statistics",
     "view_source": "Source Code",
     "live_demo": "Live Demo"
   },

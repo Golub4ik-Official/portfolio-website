@@ -77,6 +77,31 @@ export default function Projects() {
           {t('projects.title')}
         </motion.h2>
 
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="mb-12 glass p-6 rounded-2xl border border-border/50 shadow-lg"
+        >
+          <h3 className="text-xl font-bold mb-6 flex items-center gap-2 text-accent">
+            <FaGithub /> {t('projects.github_stats')}
+          </h3>
+          <div className="flex flex-col lg:flex-row gap-8 items-center justify-center">
+            <img 
+              src="https://github-readme-stats.vercel.app/api?username=Golub4ik-Official&theme=transparent&hide_border=true&show_icons=true&text_color=e5e5e5&icon_color=ca6e6f&title_color=ca6e6f" 
+              alt="GitHub Stats" 
+              className="w-full lg:w-[400px] object-contain drop-shadow-md"
+            />
+            <div className="w-full flex-1 overflow-hidden">
+              <img 
+                src="https://ghchart.rshah.org/ca6e6f/Golub4ik-Official" 
+                alt="GitHub Heatmap" 
+                className="w-full min-w-[600px] object-contain opacity-90 hue-rotate-0"
+              />
+            </div>
+          </div>
+        </motion.div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
