@@ -5,7 +5,9 @@
     "projects": "Projects",
     "research": "Research",
     "gaming": "Gaming",
-    "music": "Music"
+    "music": "Music",
+    "minecraft": "Minecraft Dev",
+    "back_home": "← Back to Main"
   },
   "hero": {
     "greeting": "Hello, I'm",
@@ -19,7 +21,8 @@
     "kiber_resident": "Studied at KiberOne",
     "kiber_awards": "Recognized by UN and UNESCO (WSIS Prizes), HiSTES, and Microsoft",
     "currently_learning": "Studying: Java",
-    "current_activity": "Activity: Minecraft servers & plugins development"
+    "current_activity": "Activity: Minecraft servers & plugins development",
+    "view_minecraft": "Explore Minecraft Dev Profile →"
   },
   "skills": {
     "title": "Skills & Expertise",
@@ -52,6 +55,81 @@
       "favorites": "Favorite Games",
       "most_played": "Most Played"
     }
+  },
+  "minecraft_page": {
+    "badge": "Minecraft Developer & Server Architect",
+    "title": "Minecraft Server & Plugin Development",
+    "subtitle": "Over 3+ years of experience engineering high-load servers, unique gameplay mechanics, custom GUIs, and scalable Java/Kotlin plugins.",
+    "stats": {
+      "exp_val": "3+ Years",
+      "exp_lbl": "Development Experience",
+      "exp_sub": "Commercial and community server engineering",
+      "projects_val": "50+",
+      "projects_lbl": "Completed Solutions",
+      "projects_sub": "Custom plugins, script engines and server setups",
+      "tps_val": "20.0 TPS",
+      "tps_lbl": "High Performance",
+      "tps_sub": "Deep optimization via Spark & Async I/O",
+      "versions_val": "1.16 – 1.21+",
+      "versions_lbl": "Modern Versions",
+      "versions_sub": "Paper, Purpur, Folia, Velocity and BungeeCord"
+    },
+    "services_title": "Core Specializations & Expertise",
+    "services_subtitle": "End-to-end solutions: from low-level protocol hacking to polished custom visuals",
+    "services": {
+      "plugins": {
+        "title": "Custom Plugins from Scratch",
+        "desc": "Engineered for Paper/Purpur/Folia: complex RPG leveling systems, quest engines, custom enchantments, minigames, and bosses with custom AI behavior."
+      },
+      "gui": {
+        "title": "Custom GUI & Resource Packs",
+        "desc": "Seamless client-mod-free UI: negative space offset techniques, custom glyphs, font textures, HUD overlays, and ItemsAdder / Oraxen integrations."
+      },
+      "packets": {
+        "title": "Packet-Level Engineering (PacketEvents & ProtocolLib)",
+        "desc": "Low-level network protocol manipulation: virtual entities, fake blocks, invisible hitboxes, and server-side animations with zero main thread lag."
+      },
+      "integrations": {
+        "title": "Integrations & Database Architecture",
+        "desc": "Deep hooks into LuckPerms, Vault, PlaceholderAPI, and DecentHolograms. Centralized storage (MySQL, Redis, PostgreSQL) for cross-server player sync."
+      },
+      "devops": {
+        "title": "Administration & Optimization",
+        "desc": "Fine-tuning of paper.yml, purpur.yml, pufferfish.yml, Spark / Timings dump profiling, memory leak resolution, and anti-exploit security hardening."
+      },
+      "models": {
+        "title": "3D Modeling & Visual Assets",
+        "desc": "Custom 3D item, armor, mob, and cosmetic modeling with Blockbench, alongside pixel-art texturing and sprite authoring in Aseprite."
+      }
+    },
+    "stack_title": "Technology Stack",
+    "stack_subtitle": "Battle-tested tools and frameworks powering production servers",
+    "stack_categories": {
+      "platforms": "Platforms & Server Cores",
+      "libraries": "Libraries & APIs",
+      "storage": "Databases & Networking",
+      "tools": "Tools & Design"
+    },
+    "arch_title": "Architectural Principles",
+    "arch_subtitle": "How I engineer robust and maintainable server-side code",
+    "arch_items": {
+      "async": {
+        "title": "Asynchronous & Thread-Safe",
+        "desc": "Heavy calculations, database queries, and external HTTP calls are dispatched off the main server tick to preserve pristine 20.0 TPS."
+      },
+      "clean": {
+        "title": "Clean Architecture & Modularity",
+        "desc": "Decoupled service layers, repositories, and managers, with first-class MiniMessage formatting and structured YAML configurations."
+      },
+      "reliability": {
+        "title": "Fault Tolerance & Security",
+        "desc": "Strict packet validation, dupe prevention, transaction rollback safety, and automated state synchronization."
+      }
+    },
+    "cta_title": "Ready to launch or upgrade your server?",
+    "cta_subtitle": "Let's discuss your project: custom plugin development, performance tuning, or a complete turnkey server setup.",
+    "cta_btn": "Get in Touch",
+    "back_to_portfolio": "Back to Main Portfolio"
   },
   "footer": {
     "copyright": "© 2026. All rights reserved.",

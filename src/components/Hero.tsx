@@ -3,14 +3,15 @@ import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaTelegramPlane, FaDiscord, FaVk, FaEnvelope } from 'react-icons/fa';
 
+const KONAMI_CODE = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
 const useKonamiCode = () => {
   const [count, setCount] = useState(0);
-  const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
-      if (e.key === konamiCode[count]) {
-        if (count === konamiCode.length - 1) {
+      if (e.key === KONAMI_CODE[count]) {
+        if (count === KONAMI_CODE.length - 1) {
           document.documentElement.classList.toggle('retro-theme');
           setCount(0);
         } else {
@@ -25,7 +26,11 @@ const useKonamiCode = () => {
   }, [count]);
 };
 
-export default function Hero() {
+interface HeroProps {
+  onOpenMinecraft?: () => void;
+}
+
+export default function Hero({ onOpenMinecraft }: HeroProps) {
   const { t } = useTranslation();
   const [copiedText, setCopiedText] = useState<string | null>(null);
   useKonamiCode();
@@ -46,7 +51,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className="pt-32 pb-20 md:pt-40 md:pb-28 min-h-screen flex items-center relative overflow-hidden">
+    <section id="about" className="pt-32 pb-20 md:pt-40 md:pb-28 min-h-screen flex items-center relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[120px] -z-10" />
 
@@ -86,9 +91,15 @@ export default function Hero() {
               </p>
             </div>
 
-            {/* Currently Doing Block */}
-            <div className="glass p-4 rounded-xl border border-accent/20 mb-8 inline-block text-left relative overflow-hidden group">
-              <div className="absolute inset-0 bg-accent/5 group-hover:bg-accent/10 transition-colors" />
+            {/* Currently Doing Block - Clickable */}
+            <div 
+              onClick={() => onOpenMinecraft?.()}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onOpenMinecraft?.(); }}
+              className="glass p-4 rounded-xl border border-accent/30 mb-8 inline-block text-left relative overflow-hidden group cursor-pointer hover:border-accent hover:shadow-lg hover:shadow-accent/15 transition-all duration-300"
+            >
+              <div className="absolute inset-0 bg-accent/5 group-hover:bg-accent/15 transition-colors" />
               <div className="relative flex items-center gap-3 mb-2">
                 <span className="relative flex h-3 w-3">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
@@ -96,7 +107,10 @@ export default function Hero() {
                 </span>
                 <span className="text-sm font-bold text-foreground">{t('hero.currently_learning')}</span>
               </div>
-              <p className="text-sm text-muted-foreground relative z-10">{t('hero.current_activity')}</p>
+              <p className="text-sm text-muted-foreground relative z-10 mb-2">{t('hero.current_activity')}</p>
+              <div className="text-xs font-semibold text-accent flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                <span>{t('hero.view_minecraft')}</span>
+              </div>
             </div>
 
             <div className="flex flex-wrap justify-center md:justify-start gap-4 relative">
