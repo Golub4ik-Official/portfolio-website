@@ -111,8 +111,9 @@
       "tools": "Tools & Design"
     },
     "cta_title": "Ready to launch or upgrade your server?",
-    "cta_subtitle": "Let's discuss your project: custom plugin development, performance tuning, or a complete turnkey server setup.",
-    "cta_btn": "Get in Touch",
+    "cta_subtitle": "The primary method to contact me is through my Discord server. You can also reach out via Telegram or Email.",
+    "cta_btn": "Discord Server (Primary)",
+    "cta_discuss": "Discuss Project",
     "back_to_portfolio": "Back to Main Portfolio"
   },
   "footer": {

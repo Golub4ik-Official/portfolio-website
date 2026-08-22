@@ -43,9 +43,9 @@ export default function Hero({ onOpenMinecraft }: HeroProps) {
   };
 
   const socials = [
-    { icon: FaGithub, href: 'https://github.com/Golub4ik-Official', label: 'GitHub' },
-    { icon: FaTelegramPlane, href: '#', label: 'Telegram', onClick: (e: React.MouseEvent) => handleCopy(e, '@Golub4ikOfficial', 'hero.copied_telegram') },
     { icon: FaDiscord, href: 'https://discord.gg/hFHKKyyDvd', label: 'Discord Server' },
+    { icon: FaTelegramPlane, href: '#', label: 'Telegram', onClick: (e: React.MouseEvent) => handleCopy(e, '@Golub4ikOfficial', 'hero.copied_telegram') },
+    { icon: FaGithub, href: 'https://github.com/Golub4ik-Official', label: 'GitHub' },
     { icon: FaVk, href: 'https://vk.ru/golub4ik_official', label: 'VK' },
     { icon: FaEnvelope, href: '#', label: 'Email', onClick: (e: React.MouseEvent) => handleCopy(e, 'KirillGolubenkoG@yandex.ru', 'hero.copied_email') },
   ];

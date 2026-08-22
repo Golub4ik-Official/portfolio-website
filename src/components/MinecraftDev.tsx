@@ -183,10 +183,12 @@ export default function MinecraftDev({ onNavigateHome }: MinecraftDevProps) {
             className="flex flex-wrap items-center justify-center gap-4"
           >
             <a
-              href="#contact-minecraft"
-              className="px-6 py-3 rounded-xl bg-accent text-white font-semibold hover:bg-accent/90 transition-all duration-300 shadow-lg shadow-accent/25 hover:scale-105 flex items-center gap-2"
+              href="https://discord.gg/hFHKKyyDvd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 rounded-xl bg-[#5865F2] text-white font-semibold hover:bg-[#4752C4] transition-all duration-300 shadow-lg shadow-[#5865F2]/25 hover:scale-105 flex items-center gap-2.5 group"
             >
-              <Send size={18} />
+              <FaDiscord size={20} className="group-hover:rotate-12 transition-transform" />
               <span>{t('minecraft_page.cta_btn')}</span>
             </a>
             <a
@@ -197,6 +199,13 @@ export default function MinecraftDev({ onNavigateHome }: MinecraftDevProps) {
             >
               <FaTelegramPlane size={18} className="text-accent" />
               <span>Telegram</span>
+            </a>
+            <a
+              href="#contact-minecraft"
+              className="px-6 py-3 rounded-xl glass border border-border hover:border-accent font-semibold transition-all duration-300 hover:scale-105 flex items-center gap-2 text-muted-foreground hover:text-foreground"
+            >
+              <Send size={16} />
+              <span>{t('minecraft_page.cta_discuss')}</span>
             </a>
           </motion.div>
         </div>
@@ -358,23 +367,23 @@ export default function MinecraftDev({ onNavigateHome }: MinecraftDevProps) {
 
           <div className="flex flex-wrap justify-center items-center gap-4 relative">
             <a
-              href="https://t.me/Golub4ikOfficial"
+              href="https://discord.gg/hFHKKyyDvd"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-3 rounded-xl bg-accent text-white font-semibold hover:bg-accent/90 transition-all duration-300 hover:scale-105 flex items-center gap-2 shadow-lg shadow-accent/25"
+              className="px-6 py-3.5 rounded-xl bg-[#5865F2] text-white font-bold hover:bg-[#4752C4] transition-all duration-300 hover:scale-105 flex items-center gap-2.5 shadow-xl shadow-[#5865F2]/30"
             >
-              <FaTelegramPlane size={18} />
-              <span>Telegram</span>
+              <FaDiscord size={20} />
+              <span>Discord Сервер</span>
             </a>
 
             <a
-              href="https://discord.gg/hFHKKyyDvd"
+              href="https://t.me/Golub4ikOfficial"
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-3 rounded-xl glass border border-border hover:border-accent font-semibold transition-all duration-300 hover:scale-105 flex items-center gap-2 text-foreground"
             >
-              <FaDiscord size={18} className="text-[#5865F2]" />
-              <span>Discord</span>
+              <FaTelegramPlane size={18} className="text-accent" />
+              <span>Telegram</span>
             </a>
 
             <a
