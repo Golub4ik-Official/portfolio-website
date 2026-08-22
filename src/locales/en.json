@@ -110,22 +110,6 @@
       "storage": "Databases & Networking",
       "tools": "Tools & Design"
     },
-    "arch_title": "Architectural Principles",
-    "arch_subtitle": "How I engineer robust and maintainable server-side code",
-    "arch_items": {
-      "async": {
-        "title": "Asynchronous & Thread-Safe",
-        "desc": "Heavy calculations, database queries, and external HTTP calls are dispatched off the main server tick to preserve pristine 20.0 TPS."
-      },
-      "clean": {
-        "title": "Clean Architecture & Modularity",
-        "desc": "Decoupled service layers, repositories, and managers, with first-class MiniMessage formatting and structured YAML configurations."
-      },
-      "reliability": {
-        "title": "Fault Tolerance & Security",
-        "desc": "Strict packet validation, dupe prevention, transaction rollback safety, and automated state synchronization."
-      }
-    },
     "cta_title": "Ready to launch or upgrade your server?",
     "cta_subtitle": "Let's discuss your project: custom plugin development, performance tuning, or a complete turnkey server setup.",
     "cta_btn": "Get in Touch",

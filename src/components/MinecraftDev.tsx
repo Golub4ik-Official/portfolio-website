@@ -9,7 +9,6 @@ import {
   Palette, 
   Zap, 
   Database, 
-  ShieldCheck, 
   Box, 
   Gauge, 
   Sparkles, 
@@ -122,20 +121,7 @@ export default function MinecraftDev({ onNavigateHome }: MinecraftDevProps) {
     }
   ];
 
-  const architectureItems = [
-    {
-      key: 'async',
-      icon: <Zap className="text-accent" size={22} />
-    },
-    {
-      key: 'clean',
-      icon: <Layers className="text-accent" size={22} />
-    },
-    {
-      key: 'reliability',
-      icon: <ShieldCheck className="text-emerald-400" size={22} />
-    }
-  ];
+
 
   return (
     <div className="pt-24 pb-20 min-h-screen relative overflow-hidden">
@@ -345,42 +331,7 @@ export default function MinecraftDev({ onNavigateHome }: MinecraftDevProps) {
           </div>
         </div>
 
-        {/* Architecture Principles */}
-        <div className="mb-24">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3">
-              {t('minecraft_page.arch_title')}
-            </h2>
-            <p className="text-muted-foreground text-sm sm:text-base">
-              {t('minecraft_page.arch_subtitle')}
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {architectureItems.map((arch, aIdx) => (
-              <motion.div
-                key={arch.key}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: aIdx * 0.15, duration: 0.5 }}
-                className="glass p-6 rounded-2xl border border-border/50 relative overflow-hidden"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2.5 rounded-xl bg-secondary/80 border border-border/40">
-                    {arch.icon}
-                  </div>
-                  <h3 className="text-base font-bold text-foreground">
-                    {t(`minecraft_page.arch_items.${arch.key}.title`)}
-                  </h3>
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {t(`minecraft_page.arch_items.${arch.key}.desc`)}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
 
         {/* Contact / CTA Banner */}
         <motion.div
