@@ -19,6 +19,7 @@
   --mention-bg: rgba(88, 101, 242, 0.15);
   --embed-bg: #2b2d31;
   --reply-spine: #4e5058;
+  --spoiler-bg: #232428;
 }
 
 * {
@@ -384,6 +385,27 @@ header {
   user-select: text;
 }
 
+.message-text h1 {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: var(--header-primary);
+  margin: 6px 0 4px 0;
+}
+
+.message-text h2 {
+  font-size: 1.15em;
+  font-weight: 700;
+  color: var(--header-primary);
+  margin: 5px 0 3px 0;
+}
+
+.message-text h3 {
+  font-size: 1.05em;
+  font-weight: 600;
+  color: var(--header-primary);
+  margin: 4px 0 2px 0;
+}
+
 .message-text a {
   color: var(--text-link);
   text-decoration: none;
@@ -410,6 +432,70 @@ header {
   overflow-x: auto;
   font-family: monospace;
   font-size: 13px;
+}
+
+/* Forwarded message card */
+.forwarded-wrapper {
+  margin-top: 6px;
+  max-width: 650px;
+}
+
+.forwarded-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.forwarded-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--divider-color);
+  border-left: 3px solid var(--brand-experiment);
+  border-radius: 6px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.forwarded-meta {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Spoiler */
+.spoiler {
+  background-color: var(--spoiler-bg);
+  color: transparent;
+  border-radius: 3px;
+  padding: 0 4px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.15s ease;
+}
+
+.spoiler:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.spoiler.revealed {
+  background-color: rgba(255, 255, 255, 0.07);
+  color: var(--text-normal);
+  user-select: text;
+}
+
+/* Discord Timestamp Pill */
+.discord-timestamp {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: var(--text-normal);
+  padding: 1px 5px;
+  border-radius: 3px;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .attachments-list {

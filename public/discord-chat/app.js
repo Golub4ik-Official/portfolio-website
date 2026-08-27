@@ -19,6 +19,18 @@ const USERS = {
     clan: null,
     class: "is-frgyta",
     avatar: "avatars/1332668157457993748.png"
+  },
+  "788450808324816917": {
+    name: "Dimgert",
+    clan: null,
+    class: "",
+    avatar: "avatars/788450808324816917.png"
+  },
+  "779339547770617867": {
+    name: "User",
+    clan: null,
+    class: "",
+    avatar: ""
   }
 };
 
@@ -58,22 +70,56 @@ function parseMarkdown(text, searchQuery = '') {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;');
 
+  // Code blocks
   escaped = escaped.replace(/```([a-z]*)\n([\s\S]*?)```/gi, (match, lang, code) => {
     return `<pre><code>${code}</code></pre>`;
   });
 
+  // Inline code
   escaped = escaped.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+  // Headers (# Header)
+  escaped = escaped.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+  escaped = escaped.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+  escaped = escaped.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+
+  // Bold & Italic
   escaped = escaped.replace(/\*\*\*([^*]+)\*\*\*/g, '<b><i>$1</i></b>');
   escaped = escaped.replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
   escaped = escaped.replace(/\*([^*]+)\*/g, '<i>$1</i>');
   escaped = escaped.replace(/~~([^~]+)~~/g, '<del>$1</del>');
-  escaped = escaped.replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
 
-  escaped = escaped.replace(/&lt;@!?(\d+)&gt;/g, (match, id) => {
-    const u = USERS[id];
-    return `<span class="badge" style="background:var(--mention-bg);color:var(--brand-experiment);">@${u ? u.name : id}</span>`;
+  // Spoilers ||spoiler||
+  escaped = escaped.replace(/\|\|([\s\S]+?)\|\|/g, '<span class="spoiler" onclick="this.classList.toggle(\'revealed\')">$1</span>');
+
+  // Discord timestamps <t:1786208400:s>
+  escaped = escaped.replace(/&lt;t:(\d+)(?::([a-zA-Z]))?&gt;/g, (match, ts, style) => {
+    const d = new Date(parseInt(ts) * 1000);
+    const formatted = d.toLocaleString('ru-RU', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+    return `<span class="discord-timestamp" title="Unix: ${ts}">🕒 ${formatted}</span>`;
   });
 
+  // URLs to clickable links
+  escaped = escaped.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+
+  // Discord Roles <@&12345>
+  escaped = escaped.replace(/&lt;@&amp;(\d+)&gt;/g, (match, id) => {
+    return `<span class="badge" style="background:var(--mention-bg);color:var(--brand-experiment);font-weight:600;">@роль</span>`;
+  });
+
+  // Discord User Mentions <@12345>
+  escaped = escaped.replace(/&lt;@!?(\d+)&gt;/g, (match, id) => {
+    const u = USERS[id];
+    return `<span class="badge" style="background:var(--mention-bg);color:var(--brand-experiment);font-weight:600;">@${u ? u.name : id}</span>`;
+  });
+
+  // Search Highlight
   if (searchQuery && searchQuery.trim().length > 0) {
     const q = searchQuery.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const regex = new RegExp(`(${q})`, 'gi');
@@ -102,20 +148,82 @@ document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && lightbox) lightbox.classList.remove('active');
 });
 
+function renderAttachmentsHtml(attachments, searchQuery) {
+  if (!attachments || attachments.length === 0) return '';
+  let html = `<div class="attachments-list">`;
+  attachments.forEach(att => {
+    const localPath = `attachments/${att.id}_${att.filename}`;
+    const isImage = (att.content_type && att.content_type.startsWith('image/')) || /\.(png|jpg|jpeg|gif|webp)$/i.test(att.filename);
+
+    if (isImage) {
+      html += `
+        <div class="attachment-image-wrapper" onclick="openLightbox('${localPath}', '${att.filename}')">
+          <img class="attachment-image" src="${localPath}" onerror="this.src='${att.url}'" alt="${att.filename}" loading="lazy">
+          <div class="attachment-meta">
+            <span>${att.filename}</span>
+            <span>${(att.size / 1024).toFixed(1)} KB</span>
+          </div>
+        </div>
+      `;
+    } else {
+      html += `
+        <div class="embed-card">
+          <a class="embed-title" href="${localPath}" download="${att.filename}">📎 ${att.filename}</a>
+          <span class="embed-desc">${(att.size / 1024).toFixed(1)} KB</span>
+        </div>
+      `;
+    }
+  });
+  html += `</div>`;
+  return html;
+}
+
+function renderEmbedsHtml(embeds) {
+  if (!embeds || embeds.length === 0) return '';
+  let html = '';
+  embeds.forEach(embed => {
+    if (embed.type === 'gifv' || embed.video) {
+      const videoUrl = (embed.video && embed.video.url) || (embed.thumbnail && embed.thumbnail.url);
+      html += `
+        <div class="embed-media">
+          ${embed.video ? `<video src="${embed.video.url}" autoplay loop muted playsinline></video>` : `<img src="${videoUrl}">`}
+        </div>
+      `;
+    } else if (embed.type === 'link' || embed.title) {
+      html += `
+        <div class="embed-card">
+          ${embed.provider ? `<div class="embed-provider">${embed.provider.name}</div>` : ''}
+          ${embed.title ? `<a class="embed-title" href="${embed.url}" target="_blank">${embed.title}</a>` : ''}
+          ${embed.description ? `<div class="embed-desc">${embed.description}</div>` : ''}
+          ${embed.thumbnail ? `<div class="embed-media"><img src="${embed.thumbnail.url}"></div>` : ''}
+        </div>
+      `;
+    }
+  });
+  return html;
+}
+
 function renderMessages() {
   container.innerHTML = '';
   const searchQuery = searchInput.value.toLowerCase();
   const filterAuthor = userFilter.value;
 
   let filtered = messages.filter(m => {
-    if (filterAuthor === 'attachments' && (!m.attachments || m.attachments.length === 0)) return false;
+    const hasAttachments = (m.attachments && m.attachments.length > 0) ||
+                           (m.message_snapshots && m.message_snapshots.some(s => s.message.attachments && s.message.attachments.length > 0));
+
+    if (filterAuthor === 'attachments' && !hasAttachments) return false;
     if (filterAuthor !== 'all' && filterAuthor !== 'attachments' && m.author.id !== filterAuthor) return false;
     if (searchQuery) {
       const matchContent = (m.content || '').toLowerCase().includes(searchQuery);
       const matchAuthor = (m.author.username || '').toLowerCase().includes(searchQuery) ||
                           (m.author.global_name || '').toLowerCase().includes(searchQuery);
       const matchAttachment = m.attachments && m.attachments.some(a => (a.filename || '').toLowerCase().includes(searchQuery));
-      if (!matchContent && !matchAuthor && !matchAttachment) return false;
+      const matchSnapshot = m.message_snapshots && m.message_snapshots.some(s => 
+        (s.message.content || '').toLowerCase().includes(searchQuery) ||
+        (s.message.attachments && s.message.attachments.some(a => (a.filename || '').toLowerCase().includes(searchQuery)))
+      );
+      if (!matchContent && !matchAuthor && !matchAttachment && !matchSnapshot) return false;
     }
     return true;
   });
@@ -164,6 +272,7 @@ function renderMessages() {
 
     let html = '';
 
+    // Reply pill
     if (msg.referenced_message) {
       const ref = msg.referenced_message;
       const refAuthor = USERS[ref.author.id] ? USERS[ref.author.id].name : (ref.author.global_name || ref.author.username);
@@ -194,57 +303,39 @@ function renderMessages() {
       `;
     }
 
+    // Direct content
     if (msg.content) {
       html += `<div class="message-text">${parseMarkdown(msg.content, searchQuery)}</div>`;
     }
 
+    // Direct Attachments
     if (msg.attachments && msg.attachments.length > 0) {
-      html += `<div class="attachments-list">`;
-      msg.attachments.forEach(att => {
-        const localPath = `attachments/${att.id}_${att.filename}`;
-        const isImage = (att.content_type && att.content_type.startsWith('image/')) || /\.(png|jpg|jpeg|gif|webp)$/i.test(att.filename);
-
-        if (isImage) {
-          html += `
-            <div class="attachment-image-wrapper" onclick="openLightbox('${localPath}', '${att.filename}')">
-              <img class="attachment-image" src="${localPath}" onerror="this.src='${att.url}'" alt="${att.filename}" loading="lazy">
-              <div class="attachment-meta">
-                <span>${att.filename}</span>
-                <span>${(att.size / 1024).toFixed(1)} KB</span>
-              </div>
-            </div>
-          `;
-        } else {
-          html += `
-            <div class="embed-card">
-              <a class="embed-title" href="${localPath}" download="${att.filename}">📎 ${att.filename}</a>
-              <span class="embed-desc">${(att.size / 1024).toFixed(1)} KB</span>
-            </div>
-          `;
-        }
-      });
-      html += `</div>`;
+      html += renderAttachmentsHtml(msg.attachments, searchQuery);
     }
 
+    // Direct Embeds
     if (msg.embeds && msg.embeds.length > 0) {
-      msg.embeds.forEach(embed => {
-        if (embed.type === 'gifv' || embed.video) {
-          const videoUrl = (embed.video && embed.video.url) || (embed.thumbnail && embed.thumbnail.url);
-          html += `
-            <div class="embed-media">
-              ${embed.video ? `<video src="${embed.video.url}" autoplay loop muted playsinline></video>` : `<img src="${videoUrl}">`}
+      html += renderEmbedsHtml(msg.embeds);
+    }
+
+    // Forwarded message snapshots (Discord Forwarding)
+    if (msg.message_snapshots && msg.message_snapshots.length > 0) {
+      msg.message_snapshots.forEach(snapshot => {
+        const sMsg = snapshot.message;
+        html += `
+          <div class="forwarded-wrapper">
+            <div class="forwarded-badge">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 9V5l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"/></svg>
+              <span>Пересланное сообщение</span>
             </div>
-          `;
-        } else if (embed.type === 'link' || embed.title) {
-          html += `
-            <div class="embed-card">
-              ${embed.provider ? `<div class="embed-provider">${embed.provider.name}</div>` : ''}
-              ${embed.title ? `<a class="embed-title" href="${embed.url}" target="_blank">${embed.title}</a>` : ''}
-              ${embed.description ? `<div class="embed-desc">${embed.description}</div>` : ''}
-              ${embed.thumbnail ? `<div class="embed-media"><img src="${embed.thumbnail.url}"></div>` : ''}
+            <div class="forwarded-card">
+              ${sMsg.timestamp ? `<div class="forwarded-meta">${formatFullTimestamp(sMsg.timestamp)}</div>` : ''}
+              ${sMsg.content ? `<div class="message-text">${parseMarkdown(sMsg.content, searchQuery)}</div>` : ''}
+              ${sMsg.attachments ? renderAttachmentsHtml(sMsg.attachments, searchQuery) : ''}
+              ${sMsg.embeds ? renderEmbedsHtml(sMsg.embeds) : ''}
             </div>
-          `;
-        }
+          </div>
+        `;
       });
     }
 
@@ -291,6 +382,11 @@ function setupStats() {
   let mediaCount = 0;
   messages.forEach(m => {
     if (m.attachments) mediaCount += m.attachments.length;
+    if (m.message_snapshots) {
+      m.message_snapshots.forEach(s => {
+        if (s.message.attachments) mediaCount += s.message.attachments.length;
+      });
+    }
   });
   document.getElementById('total-media').textContent = mediaCount;
 
