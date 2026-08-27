@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord DM Export - ФРГУТА & Golub4ik</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <div class="header-user-info">
+        <img class="header-avatar" id="partner-avatar" src="avatars/1332668157457993748.png" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'" alt="avatar">
+        <div>
+          <span class="header-username">ФРГУТА</span>
+          <span class="header-tag">@frgyta_59702</span>
+        </div>
+      </div>
+      <div class="header-badges">
+        <span class="badge">Канал: 1535603914122985604</span>
+        <span class="badge">User ID: 1332668157457993748</span>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="search-box">
+        <input type="text" id="search-input" class="search-input" placeholder="Поиск по сообщениям...">
+        <span class="search-icon">🔍</span>
+      </div>
+      <select id="user-filter" class="filter-select">
+        <option value="all">Все участники</option>
+        <option value="668798424056856587">Только Golub4ik</option>
+        <option value="1332668157457993748">Только ФРГУТА</option>
+        <option value="attachments">Только с фото/файлами</option>
+      </select>
+      <button id="download-json-btn" class="action-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+        JSON
+      </button>
+    </div>
+  </header>
+  <div class="stats-banner">
+    <div class="stats-item">Всего сообщений: <span class="stats-val" id="total-msgs">0</span></div>
+    <div class="stats-item">Вложений (фото/медиа): <span class="stats-val" id="total-media">0</span></div>
+    <div class="stats-item">Период диалога: <span class="stats-val" id="dialog-period">-</span></div>
+    <div class="stats-item" id="search-results-stat" style="display:none; color:#faa61a;">Найдено: <span class="stats-val" id="found-msgs">0</span></div>
+  </div>
+  <div class="main-container">
+    <div class="chat-area">
+      <div class="messages-container" id="messages-container"></div>
+      <div class="jump-buttons">
+        <button class="jump-btn" id="jump-top" title="В самое начало">▲</button>
+        <button class="jump-btn" id="jump-bottom" title="В самый конец">▼</button>
+      </div>
+    </div>
+  </div>
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">&times;</button>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="Fullscreen image">
+    <div class="lightbox-controls">
+      <a class="lightbox-link" id="lightbox-download" href="" target="_blank" download>Открыть оригинал</a>
+    </div>
+  </div>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
