@@ -9,15 +9,17 @@ import Gaming from './components/Gaming';
 import Music from './components/Music';
 import MinecraftDev from './components/MinecraftDev';
 import Election from './components/Election';
+import ElectionPoster from './components/ElectionPoster';
 import Footer from './components/Footer';
 
-type Page = 'home' | 'minecraft' | 'election';
+type Page = 'home' | 'minecraft' | 'election' | 'election-poster';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>(() => {
     const hash = window.location.hash.toLowerCase();
     if (hash === '#/minecraft' || hash === '#minecraft') return 'minecraft';
     if (hash === '#/election' || hash === '#election') return 'election';
+    if (hash === '#/election-poster' || hash === '#election-poster' || hash === '#/election/poster') return 'election-poster';
     return 'home';
   });
 
@@ -28,6 +30,8 @@ function App() {
         setCurrentPage('minecraft');
       } else if (hash === '#/election' || hash === '#election') {
         setCurrentPage('election');
+      } else if (hash === '#/election-poster' || hash === '#election-poster' || hash === '#/election/poster') {
+        setCurrentPage('election-poster');
       } else if (hash === '#/' || hash === '' || hash === '#about' || hash.startsWith('#')) {
         if (currentPage !== 'home' && (hash === '' || hash === '#/' || hash === '#about')) {
           setCurrentPage('home');
@@ -45,6 +49,8 @@ function App() {
       window.location.hash = '/minecraft';
     } else if (page === 'election') {
       window.location.hash = '/election';
+    } else if (page === 'election-poster') {
+      window.location.hash = '/election-poster';
     } else {
       window.location.hash = '';
     }
@@ -53,7 +59,9 @@ function App() {
 
   return (
     <div className="min-h-screen font-sans antialiased selection:bg-accent/30 selection:text-accent-foreground flex flex-col justify-between">
-      <Header currentPage={currentPage} onNavigate={handleNavigate} />
+      {currentPage !== 'election-poster' && (
+        <Header currentPage={currentPage} onNavigate={handleNavigate} />
+      )}
       
       <main className="flex-1">
         <AnimatePresence mode="wait">
@@ -75,7 +83,20 @@ function App() {
               exit={{ opacity: 0, y: -15 }}
               transition={{ duration: 0.35 }}
             >
-              <Election onNavigateHome={() => handleNavigate('home')} />
+              <Election 
+                onNavigateHome={() => handleNavigate('home')} 
+                onNavigatePoster={() => handleNavigate('election-poster')} 
+              />
+            </motion.div>
+          ) : currentPage === 'election-poster' ? (
+            <motion.div
+              key="election-poster"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.35 }}
+            >
+              <ElectionPoster onNavigateBack={() => handleNavigate('election')} />
             </motion.div>
           ) : (
             <motion.div
@@ -96,7 +117,7 @@ function App() {
         </AnimatePresence>
       </main>
 
-      <Footer />
+      {currentPage !== 'election-poster' && <Footer />}
     </div>
   );
 }

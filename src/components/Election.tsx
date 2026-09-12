@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
-import { ArrowLeft, Crown, Shield, GraduationCap, Users, Star, ScrollText, Megaphone } from 'lucide-react';
+import { ArrowLeft, Crown, Shield, GraduationCap, Users, Star, ScrollText, Megaphone, Printer } from 'lucide-react';
+import { electionData } from '../data/electionData';
 
 interface ElectionProps {
   onNavigateHome: () => void;
+  onNavigatePoster?: () => void;
 }
 
 interface CandidateCard {
@@ -28,11 +30,11 @@ function PhotoPlaceholder({ icon, accentClass }: { icon: React.ReactNode; accent
   );
 }
 
-export default function Election({ onNavigateHome }: ElectionProps) {
+export default function Election({ onNavigateHome, onNavigatePoster }: ElectionProps) {
   const president: CandidateCard = {
-    role: 'Президент',
-    name: 'Ваше имя',
-    badge: '11 А',
+    role: electionData.president.role,
+    name: electionData.president.name,
+    badge: electionData.president.badge,
     badgeColor: 'bg-amber-400/20 text-amber-400 border-amber-400/30',
     icon: <Crown size={40} />,
     accentClass: 'group-hover:border-amber-400/60',
@@ -40,112 +42,81 @@ export default function Election({ onNavigateHome }: ElectionProps) {
     glowClass: 'bg-amber-400/15',
   };
 
-  const vicePresidents: CandidateCard[] = [
-    {
-      role: 'Заместитель президента',
-      name: 'Имя заместителя',
-      badge: '11 А',
-      badgeColor: 'bg-accent/20 text-accent border-accent/30',
-      icon: <Shield size={32} />,
-      accentClass: 'group-hover:border-accent/60',
-      borderClass: 'border-accent/40 hover:border-accent/60',
-      glowClass: 'bg-accent/10',
-    },
-    {
-      role: 'Заместитель президента',
-      name: 'Имя заместителя',
-      badge: '11 Б',
-      badgeColor: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-      icon: <Shield size={32} />,
-      accentClass: 'group-hover:border-blue-400/60',
-      borderClass: 'border-blue-400/40 hover:border-blue-400/60',
-      glowClass: 'bg-blue-400/10',
-    },
-    {
-      role: 'Заместитель президента',
-      name: 'Имя заместителя',
-      badge: '11 В',
-      badgeColor: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
-      icon: <Shield size={32} />,
-      accentClass: 'group-hover:border-emerald-400/60',
-      borderClass: 'border-emerald-400/40 hover:border-emerald-400/60',
-      glowClass: 'bg-emerald-400/10',
-    },
-    {
-      role: 'Секретарь президента',
-      name: 'Имя секретаря',
-      badge: '11 А',
-      badgeColor: 'bg-accent/20 text-accent border-accent/30',
-      icon: <ScrollText size={32} />,
-      accentClass: 'group-hover:border-rose-400/60',
-      borderClass: 'border-rose-400/40 hover:border-rose-400/60',
-      glowClass: 'bg-rose-400/10',
-    },
-  ];
+  const vicePresidents: CandidateCard[] = electionData.vicePresidents.map((vp) => {
+    let badgeColor = 'bg-accent/20 text-accent border-accent/30';
+    let accentClass = 'group-hover:border-accent/60';
+    let borderClass = 'border-accent/40 hover:border-accent/60';
+    let glowClass = 'bg-accent/10';
 
-  const deputies: CandidateCard[] = [
-    {
-      role: 'Завуч по учебно-воспитательной работе',
-      name: 'Имя завуча',
-      badge: '11 А',
-      badgeColor: 'bg-accent/20 text-accent border-accent/30',
-      icon: <GraduationCap size={28} />,
-      accentClass: 'group-hover:border-purple-400/60',
-      borderClass: 'border-purple-400/30 hover:border-purple-400/50',
-      glowClass: 'bg-purple-400/10',
-    },
-    {
-      role: 'Завуч младшей школы',
-      name: 'Имя завуча',
-      subtitle: 'Ответственный за 10-ые классы',
-      badge: '11 А',
-      badgeColor: 'bg-accent/20 text-accent border-accent/30',
-      icon: <Users size={28} />,
-      accentClass: 'group-hover:border-sky-400/60',
-      borderClass: 'border-sky-400/30 hover:border-sky-400/50',
-      glowClass: 'bg-sky-400/10',
-    },
-    {
-      role: 'Завуч по медиа',
-      name: 'Имя завуча',
-      badge: '11 А',
-      badgeColor: 'bg-accent/20 text-accent border-accent/30',
-      icon: <Megaphone size={28} />,
-      accentClass: 'group-hover:border-pink-400/60',
-      borderClass: 'border-pink-400/30 hover:border-pink-400/50',
-      glowClass: 'bg-pink-400/10',
-    },
-    {
-      role: 'Завуч по движухе',
-      name: 'Имя завуча',
-      badge: '11 А',
-      badgeColor: 'bg-accent/20 text-accent border-accent/30',
-      icon: <Star size={28} />,
-      accentClass: 'group-hover:border-orange-400/60',
-      borderClass: 'border-orange-400/30 hover:border-orange-400/50',
-      glowClass: 'bg-orange-400/10',
-    },
-    {
-      role: 'Завуч по движухе',
-      name: 'Имя завуча',
-      badge: '11 Б',
-      badgeColor: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-      icon: <Star size={28} />,
-      accentClass: 'group-hover:border-orange-400/60',
-      borderClass: 'border-orange-400/30 hover:border-orange-400/50',
-      glowClass: 'bg-orange-400/10',
-    },
-    {
-      role: 'Завуч по движухе',
-      name: 'Имя завуча',
-      badge: '11 В',
-      badgeColor: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
-      icon: <Star size={28} />,
-      accentClass: 'group-hover:border-orange-400/60',
-      borderClass: 'border-orange-400/30 hover:border-orange-400/50',
-      glowClass: 'bg-orange-400/10',
-    },
-  ];
+    if (vp.badge === '11 Б') {
+      badgeColor = 'bg-blue-500/20 text-blue-400 border-blue-500/30';
+      accentClass = 'group-hover:border-blue-400/60';
+      borderClass = 'border-blue-400/40 hover:border-blue-400/60';
+      glowClass = 'bg-blue-400/10';
+    } else if (vp.badge === '11 В') {
+      badgeColor = 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
+      accentClass = 'group-hover:border-emerald-400/60';
+      borderClass = 'border-emerald-400/40 hover:border-emerald-400/60';
+      glowClass = 'bg-emerald-400/10';
+    } else if (vp.iconName === 'scroll-text') {
+      accentClass = 'group-hover:border-rose-400/60';
+      borderClass = 'border-rose-400/40 hover:border-rose-400/60';
+      glowClass = 'bg-rose-400/10';
+    }
+
+    return {
+      role: vp.role,
+      name: vp.name,
+      badge: vp.badge,
+      badgeColor,
+      icon: vp.iconName === 'scroll-text' ? <ScrollText size={32} /> : <Shield size={32} />,
+      accentClass,
+      borderClass,
+      glowClass,
+    };
+  });
+
+  const deputies: CandidateCard[] = electionData.deputies.map((d) => {
+    let icon = <GraduationCap size={28} />;
+    let accentClass = 'group-hover:border-purple-400/60';
+    let borderClass = 'border-purple-400/30 hover:border-purple-400/50';
+    let glowClass = 'bg-purple-400/10';
+    let badgeColor = 'bg-accent/20 text-accent border-accent/30';
+
+    if (d.iconName === 'users') {
+      icon = <Users size={28} />;
+      accentClass = 'group-hover:border-sky-400/60';
+      borderClass = 'border-sky-400/30 hover:border-sky-400/50';
+      glowClass = 'bg-sky-400/10';
+    } else if (d.iconName === 'megaphone') {
+      icon = <Megaphone size={28} />;
+      accentClass = 'group-hover:border-pink-400/60';
+      borderClass = 'border-pink-400/30 hover:border-pink-400/50';
+      glowClass = 'bg-pink-400/10';
+    } else if (d.iconName === 'star') {
+      icon = <Star size={28} />;
+      accentClass = 'group-hover:border-orange-400/60';
+      borderClass = 'border-orange-400/30 hover:border-orange-400/50';
+      glowClass = 'bg-orange-400/10';
+      if (d.badge === '11 Б') {
+        badgeColor = 'bg-blue-500/20 text-blue-400 border-blue-500/30';
+      } else if (d.badge === '11 В') {
+        badgeColor = 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
+      }
+    }
+
+    return {
+      role: d.role,
+      name: d.name,
+      subtitle: d.subtitle,
+      badge: d.badge,
+      badgeColor,
+      icon,
+      accentClass,
+      borderClass,
+      glowClass,
+    };
+  });
 
   const renderCard = (card: CandidateCard, index: number, isPresident = false) => (
     <motion.div
@@ -195,12 +166,12 @@ export default function Election({ onNavigateHome }: ElectionProps) {
       <div className="absolute top-[900px] right-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[130px] -z-10 pointer-events-none" />
 
       <div className="container mx-auto px-4">
-        {/* Back button */}
+        {/* Navigation buttons */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="mb-8"
+          className="mb-8 flex flex-wrap items-center justify-between gap-3"
         >
           <button
             onClick={onNavigateHome}
@@ -209,6 +180,16 @@ export default function Election({ onNavigateHome }: ElectionProps) {
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             <span>Назад к портфолио</span>
           </button>
+
+          {onNavigatePoster && (
+            <button
+              onClick={onNavigatePoster}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-amber-400/50 bg-amber-400/10 hover:bg-amber-400/20 text-amber-300 hover:text-amber-200 text-sm font-semibold transition-all duration-200 shadow-md shadow-amber-400/10 cursor-pointer"
+            >
+              <Printer size={16} />
+              <span>Печатная афиша (А4) 🖨️</span>
+            </button>
+          )}
         </motion.div>
 
         {/* Hero Section */}
@@ -336,9 +317,19 @@ export default function Election({ onNavigateHome }: ElectionProps) {
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-4 text-foreground">
             Голосуй за 11 А! 🗳️
           </h2>
-          <p className="text-muted-foreground text-sm sm:text-base max-w-xl mx-auto">
+          <p className="text-muted-foreground text-sm sm:text-base max-w-xl mx-auto mb-6">
             Наша команда готова сделать день самоуправления в лицее незабываемым. Вместе мы справимся!
           </p>
+
+          {onNavigatePoster && (
+            <button
+              onClick={onNavigatePoster}
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-2xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-sm sm:text-base transition-all duration-200 shadow-xl shadow-amber-400/20 hover:scale-105 active:scale-95 cursor-pointer"
+            >
+              <Printer size={20} />
+              <span>Открыть предвыборную афишу А4 (для печати)</span>
+            </button>
+          )}
         </motion.div>
       </div>
     </div>
