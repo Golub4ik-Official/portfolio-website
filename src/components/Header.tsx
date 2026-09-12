@@ -2,8 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
 interface HeaderProps {
-  currentPage?: 'home' | 'minecraft';
-  onNavigate?: (page: 'home' | 'minecraft') => void;
+  currentPage?: 'home' | 'minecraft' | 'election';
+  onNavigate?: (page: 'home' | 'minecraft' | 'election') => void;
 }
 
 export default function Header({ currentPage = 'home', onNavigate }: HeaderProps) {
@@ -23,7 +23,7 @@ export default function Header({ currentPage = 'home', onNavigate }: HeaderProps
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (currentPage === 'minecraft') {
+    if (currentPage !== 'home') {
       e.preventDefault();
       if (onNavigate) {
         onNavigate('home');
@@ -47,7 +47,7 @@ export default function Header({ currentPage = 'home', onNavigate }: HeaderProps
         <a 
           href="#about" 
           onClick={(e) => {
-            if (currentPage === 'minecraft') {
+            if (currentPage !== 'home') {
               e.preventDefault();
               if (onNavigate) onNavigate('home');
             }
@@ -80,19 +80,44 @@ export default function Header({ currentPage = 'home', onNavigate }: HeaderProps
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             <span>{t('nav.minecraft')}</span>
           </button>
+
+          <button
+            onClick={() => onNavigate?.(currentPage === 'election' ? 'home' : 'election')}
+            className={`px-3 py-1 text-xs font-bold rounded-full border transition-all duration-200 cursor-pointer flex items-center gap-1.5 ${
+              currentPage === 'election'
+                ? 'bg-amber-400 text-black border-amber-400 shadow-md shadow-amber-400/20'
+                : 'border-amber-400/40 text-amber-400 hover:bg-amber-400/10 hover:border-amber-400'
+            }`}
+          >
+            <span className="text-sm">👑</span>
+            <span>Выборы</span>
+          </button>
         </nav>
 
         <div className="flex items-center gap-3">
-          <button
-            onClick={() => onNavigate?.(currentPage === 'minecraft' ? 'home' : 'minecraft')}
-            className={`md:hidden px-2.5 py-1 text-xs font-bold rounded-full border transition-all duration-200 cursor-pointer ${
-              currentPage === 'minecraft'
-                ? 'bg-accent text-white border-accent'
-                : 'border-accent/40 text-accent'
-            }`}
-          >
-            {currentPage === 'minecraft' ? t('nav.back_home') : t('nav.minecraft')}
-          </button>
+          {currentPage !== 'home' ? (
+            <button
+              onClick={() => onNavigate?.('home')}
+              className="md:hidden px-2.5 py-1 text-xs font-bold rounded-full border transition-all duration-200 cursor-pointer bg-accent text-white border-accent"
+            >
+              {t('nav.back_home')}
+            </button>
+          ) : (
+            <>
+              <button
+                onClick={() => onNavigate?.('minecraft')}
+                className="md:hidden px-2.5 py-1 text-xs font-bold rounded-full border transition-all duration-200 cursor-pointer border-accent/40 text-accent"
+              >
+                {t('nav.minecraft')}
+              </button>
+              <button
+                onClick={() => onNavigate?.('election')}
+                className="md:hidden px-2.5 py-1 text-xs font-bold rounded-full border transition-all duration-200 cursor-pointer border-amber-400/40 text-amber-400"
+              >
+                👑
+              </button>
+            </>
+          )}
 
           <button 
             onClick={toggleLanguage}

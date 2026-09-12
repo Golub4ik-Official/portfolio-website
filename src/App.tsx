@@ -8,12 +8,17 @@ import Research from './components/Research';
 import Gaming from './components/Gaming';
 import Music from './components/Music';
 import MinecraftDev from './components/MinecraftDev';
+import Election from './components/Election';
 import Footer from './components/Footer';
 
+type Page = 'home' | 'minecraft' | 'election';
+
 function App() {
-  const [currentPage, setCurrentPage] = useState<'home' | 'minecraft'>(() => {
+  const [currentPage, setCurrentPage] = useState<Page>(() => {
     const hash = window.location.hash.toLowerCase();
-    return hash === '#/minecraft' || hash === '#minecraft' ? 'minecraft' : 'home';
+    if (hash === '#/minecraft' || hash === '#minecraft') return 'minecraft';
+    if (hash === '#/election' || hash === '#election') return 'election';
+    return 'home';
   });
 
   useEffect(() => {
@@ -21,8 +26,10 @@ function App() {
       const hash = window.location.hash.toLowerCase();
       if (hash === '#/minecraft' || hash === '#minecraft') {
         setCurrentPage('minecraft');
+      } else if (hash === '#/election' || hash === '#election') {
+        setCurrentPage('election');
       } else if (hash === '#/' || hash === '' || hash === '#about' || hash.startsWith('#')) {
-        if (currentPage === 'minecraft' && (hash === '' || hash === '#/' || hash === '#about')) {
+        if (currentPage !== 'home' && (hash === '' || hash === '#/' || hash === '#about')) {
           setCurrentPage('home');
         }
       }
@@ -32,10 +39,12 @@ function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, [currentPage]);
 
-  const handleNavigate = (page: 'home' | 'minecraft') => {
+  const handleNavigate = (page: Page) => {
     setCurrentPage(page);
     if (page === 'minecraft') {
       window.location.hash = '/minecraft';
+    } else if (page === 'election') {
+      window.location.hash = '/election';
     } else {
       window.location.hash = '';
     }
@@ -57,6 +66,16 @@ function App() {
               transition={{ duration: 0.35 }}
             >
               <MinecraftDev onNavigateHome={() => handleNavigate('home')} />
+            </motion.div>
+          ) : currentPage === 'election' ? (
+            <motion.div
+              key="election"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.35 }}
+            >
+              <Election onNavigateHome={() => handleNavigate('home')} />
             </motion.div>
           ) : (
             <motion.div
