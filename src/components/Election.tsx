@@ -32,7 +32,6 @@ export default function Election({ onNavigateHome }: ElectionProps) {
   const president: CandidateCard = {
     role: 'Президент',
     name: 'Ваше имя',
-    subtitle: 'Кандидат от 11 А класса',
     badge: '11 А',
     badgeColor: 'bg-amber-400/20 text-amber-400 border-amber-400/30',
     icon: <Crown size={40} />,
@@ -45,7 +44,6 @@ export default function Election({ onNavigateHome }: ElectionProps) {
     {
       role: 'Заместитель президента',
       name: 'Имя заместителя',
-      subtitle: 'Кандидат от 11 А класса',
       badge: '11 А',
       badgeColor: 'bg-accent/20 text-accent border-accent/30',
       icon: <Shield size={32} />,
@@ -56,7 +54,6 @@ export default function Election({ onNavigateHome }: ElectionProps) {
     {
       role: 'Заместитель президента',
       name: 'Имя заместителя',
-      subtitle: 'Кандидат от 11 Б класса',
       badge: '11 Б',
       badgeColor: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
       icon: <Shield size={32} />,
@@ -67,7 +64,6 @@ export default function Election({ onNavigateHome }: ElectionProps) {
     {
       role: 'Заместитель президента',
       name: 'Имя заместителя',
-      subtitle: 'Кандидат от 11 В класса',
       badge: '11 В',
       badgeColor: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
       icon: <Shield size={32} />,
@@ -78,7 +74,6 @@ export default function Election({ onNavigateHome }: ElectionProps) {
     {
       role: 'Секретарь президента',
       name: 'Имя секретаря',
-      subtitle: 'Кандидат от 11 А класса',
       badge: '11 А',
       badgeColor: 'bg-accent/20 text-accent border-accent/30',
       icon: <ScrollText size={32} />,
@@ -92,7 +87,6 @@ export default function Election({ onNavigateHome }: ElectionProps) {
     {
       role: 'Завуч по учебно-воспитательной работе',
       name: 'Имя завуча',
-      subtitle: 'Кандидат от 11 А класса',
       badge: '11 А',
       badgeColor: 'bg-accent/20 text-accent border-accent/30',
       icon: <GraduationCap size={28} />,
@@ -114,7 +108,6 @@ export default function Election({ onNavigateHome }: ElectionProps) {
     {
       role: 'Завуч по медиа',
       name: 'Имя завуча',
-      subtitle: 'Кандидат от 11 А класса',
       badge: '11 А',
       badgeColor: 'bg-accent/20 text-accent border-accent/30',
       icon: <Megaphone size={28} />,
@@ -125,7 +118,6 @@ export default function Election({ onNavigateHome }: ElectionProps) {
     {
       role: 'Завуч по движухе',
       name: 'Имя завуча',
-      subtitle: 'Кандидат от 11 А класса',
       badge: '11 А',
       badgeColor: 'bg-accent/20 text-accent border-accent/30',
       icon: <Star size={28} />,
@@ -136,7 +128,6 @@ export default function Election({ onNavigateHome }: ElectionProps) {
     {
       role: 'Завуч по движухе',
       name: 'Имя завуча',
-      subtitle: 'Кандидат от 11 Б класса',
       badge: '11 Б',
       badgeColor: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
       icon: <Star size={28} />,
@@ -147,7 +138,6 @@ export default function Election({ onNavigateHome }: ElectionProps) {
     {
       role: 'Завуч по движухе',
       name: 'Имя завуча',
-      subtitle: 'Кандидат от 11 В класса',
       badge: '11 В',
       badgeColor: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
       icon: <Star size={28} />,
