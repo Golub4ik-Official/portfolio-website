@@ -94,6 +94,7 @@ export default function Election({ onNavigateHome }: ElectionProps) {
     {
       role: 'Завуч по двужихе',
       name: 'Имя завуча',
+      subtitle: 'Кандидат от 11 А класса',
       icon: <Star size={28} />,
       accentClass: 'group-hover:border-orange-400/60',
       borderClass: 'border-orange-400/30 hover:border-orange-400/50',
@@ -102,6 +103,7 @@ export default function Election({ onNavigateHome }: ElectionProps) {
     {
       role: 'Завуч по двужихе',
       name: 'Имя завуча',
+      subtitle: 'Кандидат от 11 Б класса',
       icon: <Star size={28} />,
       accentClass: 'group-hover:border-orange-400/60',
       borderClass: 'border-orange-400/30 hover:border-orange-400/50',
@@ -110,6 +112,7 @@ export default function Election({ onNavigateHome }: ElectionProps) {
     {
       role: 'Завуч по двужихе',
       name: 'Имя завуча',
+      subtitle: 'Кандидат от 11 В класса',
       icon: <Star size={28} />,
       accentClass: 'group-hover:border-orange-400/60',
       borderClass: 'border-orange-400/30 hover:border-orange-400/50',
