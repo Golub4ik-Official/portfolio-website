@@ -24,23 +24,24 @@ export interface ElectionCampaignData {
   };
   president: CandidateItem;
   vicePresidents: CandidateItem[];
+  secretary: CandidateItem;
   deputies: CandidateItem[];
 }
 
 export const electionData: ElectionCampaignData = {
   schoolName: 'Лицей №11',
-  eventTitle: 'День самоуправления',
+  eventTitle: 'День самоуправления — 2 октября',
   campaignTitle: 'Кандидат в Президенты Лицея №11',
   targetAudience: '10–11 классы',
-  votingDateText: 'Дата выборов: будет объявлена',
-  votingLocationText: 'Место: Холл 2 этажа / Избирательный участок Лицея',
+  votingDateText: '2 октября 2026',
+  votingLocationText: 'Холл 2 этажа / Избирательный участок Лицея',
   slogan: 'Голосуй за 11 А! 🗳️',
   qrCodeUrl: 'https://golub4ik-official.github.io/portfolio-website/#/election',
 
   appeal: {
     greeting: 'Привет, старшеклассники (10–11 классы)!',
     body: [
-      'День самоуправления — это наш день, и кто будет у руля лицея, решаешь только ты.',
+      '2 октября в Лицее пройдет День самоуправления — это наш день, и кто будет у руля лицея, решаешь только ты.',
       'Кандидат от 11 А класса и наша команда готовы взять ответственность за порядок и атмосферу в школе.',
     ],
     callToAction: 'Твой голос имеет вес. Голосуй за 11 А!',
@@ -76,14 +77,15 @@ export const electionData: ElectionCampaignData = {
       badge: '11 В',
       iconName: 'shield',
     },
-    {
-      id: 'sec-11a',
-      role: 'Секретарь президента',
-      name: 'Имя секретаря',
-      badge: '11 А',
-      iconName: 'scroll-text',
-    },
   ],
+
+  secretary: {
+    id: 'sec-11a',
+    role: 'Секретарь президента',
+    name: 'Имя секретаря',
+    badge: '11 А',
+    iconName: 'scroll-text',
+  },
 
   deputies: [
     {
@@ -115,7 +117,6 @@ export const electionData: ElectionCampaignData = {
       role: 'Завуч по движухе',
       name: 'Имя завуча',
       badge: '11 А',
-      subtitle: 'Культурно-массовые мероприятия',
       iconName: 'star',
     },
     {
@@ -123,7 +124,6 @@ export const electionData: ElectionCampaignData = {
       role: 'Завуч по движухе',
       name: 'Имя завуча',
       badge: '11 Б',
-      subtitle: 'Спорт и интерактивы',
       iconName: 'star',
     },
     {
@@ -131,7 +131,6 @@ export const electionData: ElectionCampaignData = {
       role: 'Завуч по движухе',
       name: 'Имя завуча',
       badge: '11 В',
-      subtitle: 'Атмосфера и активности',
       iconName: 'star',
     },
   ],

@@ -42,7 +42,7 @@ export default function Election({ onNavigateHome, onNavigatePoster }: ElectionP
     glowClass: 'bg-amber-400/15',
   };
 
-  const vicePresidents: CandidateCard[] = electionData.vicePresidents.map((vp) => {
+  const vicePresidents: CandidateCard[] = [...electionData.vicePresidents, electionData.secretary].map((vp) => {
     let badgeColor = 'bg-accent/20 text-accent border-accent/30';
     let accentClass = 'group-hover:border-accent/60';
     let borderClass = 'border-accent/40 hover:border-accent/60';

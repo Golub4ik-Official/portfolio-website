@@ -10,7 +10,8 @@ import {
   Megaphone, 
   Star, 
   Vote, 
-  Check
+  Check,
+  Calendar
 } from 'lucide-react';
 import { electionData, type CandidateItem } from '../data/electionData';
 
@@ -41,15 +42,15 @@ function getIcon(name: CandidateItem['iconName'], size = 18, className = '') {
 
 function getBadgeStyle(badge: string) {
   if (badge.includes('11 А') || badge.includes('11А')) {
-    return 'bg-amber-100 text-amber-900 border-amber-300';
+    return 'bg-amber-100 text-amber-950 border-amber-400 font-black';
   }
   if (badge.includes('11 Б') || badge.includes('11Б')) {
-    return 'bg-blue-100 text-blue-900 border-blue-300';
+    return 'bg-blue-100 text-blue-950 border-blue-400 font-black';
   }
   if (badge.includes('11 В') || badge.includes('11В')) {
-    return 'bg-emerald-100 text-emerald-900 border-emerald-300';
+    return 'bg-emerald-100 text-emerald-950 border-emerald-400 font-black';
   }
-  return 'bg-slate-100 text-slate-800 border-slate-300';
+  return 'bg-slate-100 text-slate-900 border-slate-300 font-black';
 }
 
 export default function ElectionPoster({ onNavigateBack }: ElectionPosterProps) {
@@ -57,7 +58,7 @@ export default function ElectionPoster({ onNavigateBack }: ElectionPosterProps) 
     window.print();
   };
 
-  const { president, vicePresidents, deputies, appeal } = electionData;
+  const { president, vicePresidents, secretary, deputies, appeal } = electionData;
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 py-6 px-4 print:p-0 print:bg-white print:text-black">
@@ -72,7 +73,7 @@ export default function ElectionPoster({ onNavigateBack }: ElectionPosterProps) 
             <span>Назад к выборам</span>
           </button>
           <div className="hidden sm:block text-xs text-slate-400">
-            <span className="font-semibold text-amber-400">Формат А4</span> (210 × 297 мм) • Готов к цветной печати
+            <span className="font-semibold text-amber-400">Формат А4</span> (210 × 297 мм) • Выборы 2 октября
           </div>
         </div>
 
@@ -101,24 +102,28 @@ export default function ElectionPoster({ onNavigateBack }: ElectionPosterProps) 
           height: '297mm',
           maxWidth: '100%',
           boxSizing: 'border-box',
-          padding: '8mm 10mm 7mm 10mm',
+          padding: '7mm 10mm 6mm 10mm',
         }}
       >
         {/* Top Header */}
         <div className="poster-header border-b-2 border-slate-900 pb-2 mb-2">
-          <div className="flex items-center justify-between mb-1">
+          <div className="flex items-center justify-between mb-1.5">
             <div className="flex items-center gap-2">
               <div className="w-7 h-7 rounded-lg bg-amber-400 text-slate-950 flex items-center justify-center font-bold text-sm shadow-xs">
                 <Crown size={18} />
               </div>
               <div>
-                <span className="text-[11px] font-black tracking-widest uppercase text-slate-800">
+                <span className="text-[12px] font-black tracking-widest uppercase text-slate-800">
                   {electionData.schoolName} • ДЕНЬ САМОУПРАВЛЕНИЯ
                 </span>
               </div>
             </div>
-            <div className="text-right">
-              <span className="inline-block border-2 border-amber-500 bg-amber-50 text-amber-950 font-black text-[12px] px-2.5 py-0.5 rounded-md tracking-wider">
+            <div className="flex items-center gap-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-md bg-amber-400 text-slate-950 font-black text-[12px] tracking-wider uppercase border border-amber-500 shadow-2xs">
+                <Calendar size={13} className="stroke-[3]" />
+                2 ОКТЯБРЯ
+              </div>
+              <span className="inline-block border-2 border-slate-900 bg-slate-100 text-slate-900 font-black text-[12px] px-2.5 py-0.5 rounded-md tracking-wider">
                 БЮЛЛЕТЕНЬ № 1
               </span>
             </div>
@@ -126,10 +131,10 @@ export default function ElectionPoster({ onNavigateBack }: ElectionPosterProps) 
 
           <div className="flex items-end justify-between">
             <div>
-              <h1 className="text-[25px] leading-tight font-black tracking-tight text-slate-950 uppercase">
+              <h1 className="text-[26px] leading-none font-black tracking-tight text-slate-950 uppercase">
                 ВЫБОРЫ РУКОВОДСТВА ЛИЦЕЯ
               </h1>
-              <p className="text-[12px] font-bold text-amber-600 tracking-wide uppercase">
+              <p className="text-[12px] font-bold text-amber-600 tracking-wide uppercase mt-1">
                 Официальный кандидат в Президенты от 11 А класса
               </p>
             </div>
@@ -137,48 +142,48 @@ export default function ElectionPoster({ onNavigateBack }: ElectionPosterProps) 
         </div>
 
         {/* Top Section: Candidate + Appeal side-by-side */}
-        <div className="grid grid-cols-12 gap-3 mb-2 items-stretch">
+        <div className="grid grid-cols-12 gap-3 mb-2.5 items-stretch">
           {/* Candidate Card (4 cols) */}
-          <div className="col-span-4 bg-gradient-to-b from-amber-50/90 via-white to-amber-50/60 border-2 border-amber-400 rounded-xl p-3 flex flex-col items-center justify-center text-center relative shadow-xs">
-            <span className="absolute top-2 right-2 text-[10px] font-black px-2 py-0.5 rounded border bg-amber-200 text-amber-950 border-amber-400">
+          <div className="col-span-4 bg-gradient-to-b from-amber-50/90 via-white to-amber-50/60 border-2 border-amber-400 rounded-2xl p-3 flex flex-col items-center justify-center text-center relative shadow-xs">
+            <span className="absolute top-2.5 right-2.5 text-[10px] font-black px-2 py-0.5 rounded border bg-amber-200 text-amber-950 border-amber-400">
               {president.badge}
             </span>
 
-            {/* Photo box */}
-            <div className="w-24 h-24 rounded-xl border-2 border-dashed border-amber-400/80 bg-white flex flex-col items-center justify-center gap-1 my-1 text-slate-400 shadow-inner">
-              <Crown size={32} className="text-amber-500" />
-              <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">ФОТО</span>
+            {/* Photo box - Larger size */}
+            <div className="w-28 h-28 rounded-xl border-2 border-dashed border-amber-400/90 bg-white flex flex-col items-center justify-center gap-1 my-1 text-slate-400 shadow-inner">
+              <Crown size={36} className="text-amber-500" />
+              <span className="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">ФОТО</span>
             </div>
 
-            <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-700 mb-0.5">
+            <span className="text-[10px] font-extrabold uppercase tracking-wider text-amber-700 mt-1">
               КАНДИДАТ В ПРЕЗИДЕНТЫ
             </span>
-            <h2 className="text-[17px] font-black text-slate-950 leading-snug">
+            <h2 className="text-[18px] font-black text-slate-950 leading-snug">
               {president.name}
             </h2>
-            <p className="text-[10px] font-semibold text-slate-600 mt-0.5">
+            <p className="text-[10.5px] font-semibold text-slate-600 mt-0.5">
               Лидер команды 11 А класса
             </p>
           </div>
 
           {/* Appeal to 10-11 graders (8 cols) — Light & Harmonious Theme */}
-          <div className="col-span-8 bg-gradient-to-br from-amber-50/50 via-white to-slate-50 border-2 border-amber-300/80 rounded-xl p-3.5 flex flex-col justify-between shadow-xs relative">
+          <div className="col-span-8 bg-gradient-to-br from-amber-50/50 via-white to-slate-50 border-2 border-amber-300/80 rounded-2xl p-3.5 flex flex-col justify-between shadow-xs relative">
             <div>
               <div className="flex items-center justify-between pb-1.5 mb-2 border-b border-amber-200">
-                <span className="text-[11.5px] font-black text-amber-900 uppercase tracking-wider flex items-center gap-1.5">
+                <span className="text-[12px] font-black text-amber-900 uppercase tracking-wider flex items-center gap-1.5">
                   <Vote size={15} className="text-amber-600" />
                   ОБРАЩЕНИЕ К СТАРШЕКЛАССНИКАМ
                 </span>
-                <span className="text-[10px] font-bold bg-amber-100 text-amber-900 px-2 py-0.5 rounded border border-amber-300">
+                <span className="text-[10.5px] font-extrabold bg-amber-100 text-amber-900 px-2.5 py-0.5 rounded border border-amber-300">
                   10-е и 11-е классы
                 </span>
               </div>
 
-              <p className="text-[13px] font-black text-slate-900 mb-1.5 leading-snug">
+              <p className="text-[13.5px] font-black text-slate-900 mb-1.5 leading-snug">
                 {appeal.greeting}
               </p>
 
-              <div className="space-y-1.5 text-[11.5px] text-slate-700 leading-relaxed font-medium">
+              <div className="space-y-1.5 text-[12px] text-slate-700 leading-relaxed font-medium">
                 {appeal.body.map((paragraph, idx) => (
                   <p key={idx}>{paragraph}</p>
                 ))}
@@ -186,52 +191,55 @@ export default function ElectionPoster({ onNavigateBack }: ElectionPosterProps) 
             </div>
 
             <div className="pt-2 mt-2 border-t border-amber-200/80 flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-[12px] font-black text-amber-800">
-                <Check size={15} className="text-amber-600 stroke-[3]" />
+              <div className="flex items-center gap-1.5 text-[12.5px] font-black text-amber-800">
+                <Check size={16} className="text-amber-600 stroke-[3]" />
                 <span>{appeal.callToAction}</span>
               </div>
+              <span className="text-[10px] font-bold text-amber-700">
+                День самоуправления: 2 октября
+              </span>
             </div>
           </div>
         </div>
 
-        {/* Section: Vice Presidents & Secretary (with Photos!) */}
-        <div className="mb-2">
+        {/* Section 1: Vice Presidents (3 cards with BIG photos) */}
+        <div className="mb-2.5">
           <div className="flex items-center justify-between mb-1.5">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-slate-900" />
-              <h3 className="text-[11.5px] font-black uppercase tracking-wider text-slate-900">
-                ЗАМЕСТИТЕЛИ ПРЕЗИДЕНТА И СЕКРЕТАРЬ
+              <h3 className="text-[12px] font-black uppercase tracking-wider text-slate-900">
+                ЗАМЕСТИТЕЛИ ПРЕЗИДЕНТА
               </h3>
             </div>
-            <span className="text-[9.5px] font-bold text-slate-500 uppercase tracking-wider">
-              Единая межклассовая команда
+            <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+              Объединённая команда параллели
             </span>
           </div>
 
-          <div className="grid grid-cols-4 gap-2.5">
+          <div className="grid grid-cols-3 gap-3">
             {vicePresidents.map((vp) => (
               <div 
                 key={vp.id}
-                className="bg-slate-50/90 border-2 border-slate-200/90 rounded-xl p-2 flex flex-col items-center justify-between text-center relative shadow-2xs"
+                className="bg-slate-50/90 border-2 border-slate-200 rounded-2xl p-3 flex flex-col items-center justify-between text-center relative shadow-2xs"
               >
-                <div className="w-full flex items-center justify-between mb-0.5">
-                  <span className="text-[8px] font-bold text-slate-400 uppercase">Команда</span>
-                  <span className={`text-[9px] font-black px-1.5 py-0.2 rounded border ${getBadgeStyle(vp.badge)}`}>
+                <div className="w-full flex items-center justify-between mb-1">
+                  <span className="text-[8.5px] font-bold text-slate-400 uppercase">Команда</span>
+                  <span className={`text-[10px] px-2 py-0.5 rounded border ${getBadgeStyle(vp.badge)}`}>
                     {vp.badge}
                   </span>
                 </div>
 
-                {/* Photo Placeholder for VPs & Secretary */}
-                <div className="w-18 h-18 rounded-lg border-2 border-dashed border-slate-300 bg-white flex flex-col items-center justify-center gap-0.5 my-1 text-slate-400 shadow-inner">
-                  {getIcon(vp.iconName, 20, 'text-slate-500')}
-                  <span className="text-[7.5px] font-bold uppercase tracking-wider text-slate-400">ФОТО</span>
+                {/* Big Photo Placeholder for Vice Presidents */}
+                <div className="w-24 h-24 rounded-xl border-2 border-dashed border-slate-300 bg-white flex flex-col items-center justify-center gap-1 my-1 text-slate-400 shadow-inner">
+                  {getIcon(vp.iconName, 26, 'text-slate-500')}
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">ФОТО</span>
                 </div>
 
-                <div className="w-full">
-                  <div className="text-[8.5px] font-bold text-slate-500 uppercase leading-tight line-clamp-1">
+                <div className="w-full mt-1">
+                  <div className="text-[9.5px] font-bold text-slate-500 uppercase leading-tight line-clamp-1">
                     {vp.role}
                   </div>
-                  <div className="text-[11.5px] font-black text-slate-900 leading-snug mt-0.5 truncate">
+                  <div className="text-[13px] font-black text-slate-900 leading-snug mt-0.5 truncate">
                     {vp.name}
                   </div>
                 </div>
@@ -240,76 +248,115 @@ export default function ElectionPoster({ onNavigateBack }: ElectionPosterProps) 
           </div>
         </div>
 
-        {/* Section: Cabinet of Deputies (Завучи) */}
-        <div className="mb-2 flex-1 flex flex-col justify-start">
-          <div className="flex items-center justify-between mb-1.5">
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-              <h3 className="text-[11.5px] font-black uppercase tracking-wider text-slate-900">
-                КАБИНЕТ ЗАВУЧЕЙ ПО НАПРАВЛЕНИЯМ
-              </h3>
-            </div>
-            <span className="text-[9.5px] font-bold text-amber-700 uppercase tracking-wider">
-              Ответственные за работу лицея
-            </span>
-          </div>
+        {/* Section 2: Secretary (separated) + Deputies in balanced grid */}
+        <div className="mb-2">
+          <div className="grid grid-cols-12 gap-3 items-stretch">
+            {/* Secretary Card (4 cols) — Separate and with BIG photo */}
+            <div className="col-span-4 flex flex-col">
+              <div className="flex items-center gap-2 mb-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
+                <h3 className="text-[12px] font-black uppercase tracking-wider text-slate-900">
+                  СЕКРЕТАРИАТ
+                </h3>
+              </div>
 
-          <div className="grid grid-cols-3 gap-2">
-            {deputies.map((dep) => {
-              const isJunior = dep.id === 'dep-junior';
-              return (
-                <div 
-                  key={dep.id}
-                  className={`rounded-lg p-2 flex flex-col justify-between border-2 transition-all ${
-                    isJunior 
-                      ? 'bg-amber-50/80 border-amber-300 shadow-2xs' 
-                      : 'bg-white border-slate-200'
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-1 mb-1">
-                    <div className={`p-1 rounded border shadow-2xs ${isJunior ? 'bg-amber-100 text-amber-900 border-amber-300' : 'bg-slate-50 text-slate-700 border-slate-200'}`}>
-                      {getIcon(dep.iconName, 14)}
-                    </div>
-                    <span className={`text-[9px] font-black px-1.5 py-0.2 rounded border ${getBadgeStyle(dep.badge)}`}>
-                      {dep.badge}
-                    </span>
+              <div className="flex-1 bg-slate-50/90 border-2 border-slate-200 rounded-2xl p-3 flex flex-col items-center justify-between text-center relative shadow-2xs">
+                <div className="w-full flex items-center justify-between mb-1">
+                  <span className="text-[8.5px] font-bold text-slate-400 uppercase">Администрация</span>
+                  <span className={`text-[10px] px-2 py-0.5 rounded border ${getBadgeStyle(secretary.badge)}`}>
+                    {secretary.badge}
+                  </span>
+                </div>
+
+                {/* Big Photo Placeholder for Secretary */}
+                <div className="w-24 h-24 rounded-xl border-2 border-dashed border-slate-300 bg-white flex flex-col items-center justify-center gap-1 my-1 text-slate-400 shadow-inner">
+                  {getIcon(secretary.iconName, 26, 'text-rose-500')}
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">ФОТО</span>
+                </div>
+
+                <div className="w-full mt-1">
+                  <div className="text-[9.5px] font-bold text-slate-500 uppercase leading-tight line-clamp-1">
+                    {secretary.role}
                   </div>
-
-                  <div>
-                    <div className="text-[10px] font-black text-slate-900 leading-tight">
-                      {dep.role}
-                    </div>
-                    {dep.subtitle && (
-                      <div className={`text-[8.5px] font-bold leading-tight mt-0.5 line-clamp-1 ${isJunior ? 'text-amber-800' : 'text-slate-500'}`}>
-                        {dep.subtitle}
-                      </div>
-                    )}
-                    <div className="text-[11px] font-extrabold text-slate-800 mt-1 truncate">
-                      {dep.name}
-                    </div>
+                  <div className="text-[13px] font-black text-slate-900 leading-snug mt-0.5 truncate">
+                    {secretary.name}
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            </div>
+
+            {/* Cabinet of Deputies (8 cols) — 6 cards in 3x2 grid */}
+            <div className="col-span-8 flex flex-col">
+              <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+                  <h3 className="text-[12px] font-black uppercase tracking-wider text-slate-900">
+                    КАБИНЕТ ЗАВУЧЕЙ ПО НАПРАВЛЕНИЯМ
+                  </h3>
+                </div>
+                <span className="text-[10px] font-bold text-amber-700 uppercase tracking-wider">
+                  Ответственные за лицей
+                </span>
+              </div>
+
+              <div className="flex-1 grid grid-cols-3 gap-2.5">
+                {deputies.map((dep) => {
+                  const isJunior = dep.id === 'dep-junior';
+                  return (
+                    <div 
+                      key={dep.id}
+                      className={`rounded-xl p-2.5 flex flex-col justify-between border-2 transition-all ${
+                        isJunior 
+                          ? 'bg-amber-50/80 border-amber-400 shadow-2xs' 
+                          : 'bg-white border-slate-200'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between gap-1 mb-1">
+                        <div className={`p-1.5 rounded-lg border shadow-2xs ${isJunior ? 'bg-amber-100 text-amber-950 border-amber-300' : 'bg-slate-50 text-slate-700 border-slate-200'}`}>
+                          {getIcon(dep.iconName, 15)}
+                        </div>
+                        <span className={`text-[9.5px] px-1.5 py-0.2 rounded border ${getBadgeStyle(dep.badge)}`}>
+                          {dep.badge}
+                        </span>
+                      </div>
+
+                      <div>
+                        <div className="text-[10.5px] font-black text-slate-900 leading-tight">
+                          {dep.role}
+                        </div>
+                        {dep.subtitle && (
+                          <div className={`text-[8.5px] font-extrabold leading-tight mt-0.5 line-clamp-1 ${isJunior ? 'text-amber-800' : 'text-slate-500'}`}>
+                            {dep.subtitle}
+                          </div>
+                        )}
+                        <div className="text-[12px] font-black text-slate-800 mt-1 truncate">
+                          {dep.name}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Footer Section: Big CTA + Date + QR Code */}
         <div className="poster-footer border-t-2 border-slate-900 pt-2">
-          <div className="bg-slate-100 border border-slate-300 rounded-xl p-2.5 flex items-center justify-between gap-3">
+          <div className="bg-slate-100 border border-slate-300 rounded-2xl p-2.5 flex items-center justify-between gap-3">
             {/* Left: Call to action */}
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-0.5">
-                <span className="text-[19px] font-black text-slate-950 uppercase tracking-tight">
+                <span className="text-[20px] font-black text-slate-950 uppercase tracking-tight">
                   ГОЛОСУЙ ЗА 11 А!
                 </span>
-                <span className="text-[17px]">🗳️</span>
+                <span className="text-[18px]">🗳️</span>
               </div>
-              <p className="text-[10.5px] font-bold text-slate-700 leading-snug">
-                Команда готова сделать этот День самоуправления лучшим в истории лицея!
+              <p className="text-[11px] font-bold text-slate-700 leading-snug">
+                Команда готова сделать День самоуправления лучшим в истории лицея!
               </p>
-              <div className="flex items-center gap-3 mt-1 text-[9.5px] font-semibold text-slate-600">
-                <span>📅 {electionData.votingDateText}</span>
+              <div className="flex items-center gap-3 mt-1 text-[10px] font-extrabold text-slate-800">
+                <span>📅 День самоуправления и выборы: <b>2 октября 2026</b></span>
               </div>
             </div>
 
@@ -323,7 +370,7 @@ export default function ElectionPoster({ onNavigateBack }: ElectionPosterProps) 
                   includeMargin={false}
                 />
               </div>
-              <div className="text-left max-w-[90px]">
+              <div className="text-left max-w-[95px]">
                 <span className="block text-[8.5px] font-black text-slate-900 uppercase leading-tight">
                   ОНЛАЙН-САЙТ ВЫБОРОВ
                 </span>
@@ -365,7 +412,7 @@ export default function ElectionPoster({ onNavigateBack }: ElectionPosterProps) 
             max-width: 210mm !important;
             max-height: 297mm !important;
             margin: 0 !important;
-            padding: 8mm 10mm 7mm 10mm !important;
+            padding: 7mm 10mm 6mm 10mm !important;
             box-shadow: none !important;
             border-radius: 0 !important;
             page-break-after: avoid !important;
