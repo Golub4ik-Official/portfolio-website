@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowLeft, Crown, Shield, GraduationCap, Users, Star } from 'lucide-react';
+import { ArrowLeft, Crown, Shield, GraduationCap, Users, Star, ScrollText, Megaphone } from 'lucide-react';
 
 interface ElectionProps {
   onNavigateHome: () => void;
@@ -33,6 +33,8 @@ export default function Election({ onNavigateHome }: ElectionProps) {
     role: 'Президент',
     name: 'Ваше имя',
     subtitle: 'Кандидат от 11 А класса',
+    badge: '11 А',
+    badgeColor: 'bg-amber-400/20 text-amber-400 border-amber-400/30',
     icon: <Crown size={40} />,
     accentClass: 'group-hover:border-amber-400/60',
     borderClass: 'border-amber-400/50 bg-amber-400/5 shadow-lg shadow-amber-400/10',
@@ -44,6 +46,8 @@ export default function Election({ onNavigateHome }: ElectionProps) {
       role: 'Заместитель президента',
       name: 'Имя заместителя',
       subtitle: 'Кандидат от 11 А класса',
+      badge: '11 А',
+      badgeColor: 'bg-accent/20 text-accent border-accent/30',
       icon: <Shield size={32} />,
       accentClass: 'group-hover:border-accent/60',
       borderClass: 'border-accent/40 hover:border-accent/60',
@@ -71,12 +75,26 @@ export default function Election({ onNavigateHome }: ElectionProps) {
       borderClass: 'border-emerald-400/40 hover:border-emerald-400/60',
       glowClass: 'bg-emerald-400/10',
     },
+    {
+      role: 'Секретарь президента',
+      name: 'Имя секретаря',
+      subtitle: 'Кандидат от 11 А класса',
+      badge: '11 А',
+      badgeColor: 'bg-accent/20 text-accent border-accent/30',
+      icon: <ScrollText size={32} />,
+      accentClass: 'group-hover:border-rose-400/60',
+      borderClass: 'border-rose-400/40 hover:border-rose-400/60',
+      glowClass: 'bg-rose-400/10',
+    },
   ];
 
   const deputies: CandidateCard[] = [
     {
       role: 'Завуч по учебно-воспитательной работе',
       name: 'Имя завуча',
+      subtitle: 'Кандидат от 11 А класса',
+      badge: '11 А',
+      badgeColor: 'bg-accent/20 text-accent border-accent/30',
       icon: <GraduationCap size={28} />,
       accentClass: 'group-hover:border-purple-400/60',
       borderClass: 'border-purple-400/30 hover:border-purple-400/50',
@@ -86,33 +104,52 @@ export default function Election({ onNavigateHome }: ElectionProps) {
       role: 'Завуч младшей школы',
       name: 'Имя завуча',
       subtitle: 'Ответственный за 10-ые классы',
+      badge: '11 А',
+      badgeColor: 'bg-accent/20 text-accent border-accent/30',
       icon: <Users size={28} />,
       accentClass: 'group-hover:border-sky-400/60',
       borderClass: 'border-sky-400/30 hover:border-sky-400/50',
       glowClass: 'bg-sky-400/10',
     },
     {
-      role: 'Завуч по двужихе',
+      role: 'Завуч по медиа',
       name: 'Имя завуча',
       subtitle: 'Кандидат от 11 А класса',
+      badge: '11 А',
+      badgeColor: 'bg-accent/20 text-accent border-accent/30',
+      icon: <Megaphone size={28} />,
+      accentClass: 'group-hover:border-pink-400/60',
+      borderClass: 'border-pink-400/30 hover:border-pink-400/50',
+      glowClass: 'bg-pink-400/10',
+    },
+    {
+      role: 'Завуч по движухе',
+      name: 'Имя завуча',
+      subtitle: 'Кандидат от 11 А класса',
+      badge: '11 А',
+      badgeColor: 'bg-accent/20 text-accent border-accent/30',
       icon: <Star size={28} />,
       accentClass: 'group-hover:border-orange-400/60',
       borderClass: 'border-orange-400/30 hover:border-orange-400/50',
       glowClass: 'bg-orange-400/10',
     },
     {
-      role: 'Завуч по двужихе',
+      role: 'Завуч по движухе',
       name: 'Имя завуча',
       subtitle: 'Кандидат от 11 Б класса',
+      badge: '11 Б',
+      badgeColor: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
       icon: <Star size={28} />,
       accentClass: 'group-hover:border-orange-400/60',
       borderClass: 'border-orange-400/30 hover:border-orange-400/50',
       glowClass: 'bg-orange-400/10',
     },
     {
-      role: 'Завуч по двужихе',
+      role: 'Завуч по движухе',
       name: 'Имя завуча',
       subtitle: 'Кандидат от 11 В класса',
+      badge: '11 В',
+      badgeColor: 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30',
       icon: <Star size={28} />,
       accentClass: 'group-hover:border-orange-400/60',
       borderClass: 'border-orange-400/30 hover:border-orange-400/50',
@@ -231,7 +268,7 @@ export default function Election({ onNavigateHome }: ElectionProps) {
           </motion.div>
         </div>
 
-        {/* Vice Presidents */}
+        {/* Vice Presidents & Secretary */}
         <div className="mb-20">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <motion.h2
@@ -240,7 +277,7 @@ export default function Election({ onNavigateHome }: ElectionProps) {
               viewport={{ once: true }}
               className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3"
             >
-              Заместители президента
+              Заместители и секретарь
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -253,7 +290,7 @@ export default function Election({ onNavigateHome }: ElectionProps) {
             </motion.p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {vicePresidents.map((vp, i) => renderCard(vp, i))}
           </div>
         </div>
@@ -280,14 +317,14 @@ export default function Election({ onNavigateHome }: ElectionProps) {
             </motion.p>
           </div>
 
-          {/* First row: 2 cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-6">
-            {deputies.slice(0, 2).map((d, i) => renderCard(d, i))}
+          {/* First row: 3 cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-6">
+            {deputies.slice(0, 3).map((d, i) => renderCard(d, i))}
           </div>
 
           {/* Second row: 3 cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {deputies.slice(2).map((d, i) => renderCard(d, i + 2))}
+            {deputies.slice(3, 6).map((d, i) => renderCard(d, i + 3))}
           </div>
         </div>
 
