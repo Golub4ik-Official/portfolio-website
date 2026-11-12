@@ -18,12 +18,6 @@
     "logo": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/394360/capsule_184x69.jpg"
   },
   {
-    "name": "War Thunder",
-    "hours": "188.1 hrs",
-    "link": "https://store.steampowered.com/app/236390",
-    "logo": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/236390/capsule_184x69.jpg"
-  },
-  {
     "name": "Barotrauma",
     "hours": "120.6 hrs",
     "link": "https://store.steampowered.com/app/602960",
@@ -58,5 +52,11 @@
     "hours": "20.7 hrs",
     "link": "https://store.steampowered.com/app/578080",
     "logo": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/578080/capsule_184x69.jpg"
+  },
+  {
+    "name": "Caliber",
+    "hours": "20.3 hrs",
+    "link": "https://store.steampowered.com/app/307950",
+    "logo": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/307950/capsule_184x69.jpg"
   }
 ]
